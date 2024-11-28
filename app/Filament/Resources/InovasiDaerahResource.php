@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\MultiSelect;
@@ -18,6 +19,7 @@ use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -28,9 +30,9 @@ class InovasiDaerahResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Inovasi Pemerintah Daerah';
+    protected static ?string $navigationLabel = 'Inovasi Daerah';
 
-    protected static ?string $navigationGroup = 'Lomba Inovasi Daerah';
+    protected static ?string $navigationGroup = 'Database Inovasi Daerah';
 
     public static ?string $label = 'Inovasi Pemerintah Daerah';
 
@@ -96,16 +98,6 @@ class InovasiDaerahResource extends Resource
                         ])
                         ->required()
                         ->inline(),
-                    Select::make('tematik')
-                        ->label('Tematik')
-                        ->options([
-                            '1' => 'Digitalisasi Layanan Pemerintahan',
-                            '2' => 'Penanggulangan Kemiskinan',
-                            '3' => 'Kemudahan Investasi',
-                            '4' => 'Prioritas Aktual Presiden',
-                            '5' => 'Non Tematik',
-                        ])
-                        ->required(),
                     Placeholder::make('note')
                         ->label('Urusan Pemerintahan'),
                     Select::make('urusan_utama')
@@ -219,9 +211,30 @@ class InovasiDaerahResource extends Resource
                         ->label('Manfaat Inovasi')
                         ->required()
                         ->rows(5),
-                    
-
-                    
+                    FileUpload::make('anggaran')
+                        ->label('Anggaran (Jika Ada')
+                        ->directory('uploads')
+                        ->disk('local')
+                        ->maxSize(2048)
+                        ->helperText('*) Dokumen PDF, Maksimal 2MB'),
+                    FileUpload::make('profil_bisnis')
+                        ->label('Profil Bisnis (.ppt) (Jika ada)')
+                        ->directory('uploads')
+                        ->disk('local')
+                        ->maxSize(2048)
+                        ->helperText('*) Dokumen PDF, Maksimal 2MB'),
+                    FileUpload::make('doc_HAKI')
+                        ->label('Dokumen HAKI')
+                        ->directory('uploads')
+                        ->disk('local')
+                        ->maxSize(2048)
+                        ->helperText('*) Dokumen PDF, Maksimal 2MB'),
+                    FileUpload::make('penghargaan')
+                        ->label('penghargaan')
+                        ->directory('uploads')
+                        ->disk('local')
+                        ->maxSize(2048)
+                        ->helperText('*) Dokumen PDF, Maksimal 2MB'),
                 ])
             ]);
     }
@@ -289,7 +302,7 @@ class InovasiDaerahResource extends Resource
                 TextColumn::make('waktu_penerapan')
                     ->label('Waktu Penerapan Inovasi Daerah')
                     ->dateTime('d M Y') // Format tanggal
-                    ->sortable()
+                    ->sortable(),
             ])
             ->filters([
                 //

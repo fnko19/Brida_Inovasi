@@ -12,4 +12,9 @@ class daftarOpd extends Model
     protected $fillable=[
         'nama_opd',
     ];
+
+    public function uptds()
+    {
+        return $this->hasMany(daftarUptd::class, 'daftar_opd_id');
+    }
 }

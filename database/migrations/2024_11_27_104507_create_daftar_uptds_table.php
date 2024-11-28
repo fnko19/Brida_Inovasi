@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('daftar_opds', function (Blueprint $table) {
+        Schema::create('daftar_uptds', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_opd');
+            $table->string('nama_uptd');
+            $table->foreignId('daftar_opd_id') 
+                ->constrained('daftar_opds') 
+                ->onDelete('cascade'); 
+            $table->string('daerah')->default('Kota Makassar');
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('daftar_opds');
+        Schema::dropIfExists('daftar_uptds');
     }
 };

@@ -2,48 +2,48 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DaftarOpdResource\Pages;
-use App\Filament\Resources\DaftarOpdResource\RelationManagers;
-use App\Models\DaftarOpd;
+use App\Filament\Resources\DaftarUptdResource\Pages;
+use App\Filament\Resources\DaftarUptdResource\RelationManagers;
+use App\Models\DaftarUptd;
+use App\Filament\Resources\DaftarOpdResources;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Placeholder;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DaftarOpdResource extends Resource
+class DaftarUptdResource extends Resource
 {
-    protected static ?string $model = DaftarOpd::class;
+    protected static ?string $model = daftarUptd::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationLabel = 'Daftar OPD';
-
+    
     protected static ?string $navigationGroup = 'Konfigurasi';
 
-    public static ?string $label = 'Daftar OPD';
+    public static ?string $label = 'Daftar UPTD';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Card::make([
-                    Placeholder::make('note')
+                    TextInput::make('nama_uptd')
+                        ->label('Nama UPTD')
+                        ->required(),
+                    Select::make('daftar_opd_id')
+                        ->label('Nama OPD')
+                        ->relationship('opds', 'nama_opd') 
+                        ->required(),
+                    TextInput::make('daerah')
                         ->label('Daerah')
-                        ->helperText('Kota Makassar'),
-                    TextInput::make('nama_opd'),
-                    Placeholder::make('note')
-                        ->label('Dibuat Oleh')
-                        ->helperText('Badan Riset dan Inovasi Daerah'),
-                    Placeholder::make('note')
-                        ->label('Last Update Oleh')
-                        ->helperText('Badan Riset dan Inovasi Daerah'),
+                        ->default('Kota Makassar')
+                        ->disabled(),
                 ])
             ]);
     }
@@ -53,17 +53,19 @@ class DaftarOpdResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('No'),
-                TextColumn::make('nama_opd')
+                TextColumn::make('nama_uptd')->label('Nama UPTD'),
+                TextColumn::make('opds.nama_opd')  
                     ->label('Nama OPD')
+                    ->sortable()
                     ->searchable(),
-
+                TextColumn::make('daerah')
+                    ->label('Daerah'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -82,9 +84,9 @@ class DaftarOpdResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDaftarOpds::route('/'),
-            'create' => Pages\CreateDaftarOpd::route('/create'),
-            'edit' => Pages\EditDaftarOpd::route('/{record}/edit'),
+            'index' => Pages\ListDaftarUptds::route('/'),
+            'create' => Pages\CreateDaftarUptd::route('/create'),
+            'edit' => Pages\EditDaftarUptd::route('/{record}/edit'),
         ];
     }
 }
