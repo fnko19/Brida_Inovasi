@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('bentuk_inovasi', ['daerah', 'layanan', 'tata_kelola']); 
             $table->enum('tematik', ['1', '2', '3', '4', '5',]);   
             $table->enum('prioritas', ['1','2']); 
+            $table->enum('misi', ['1','2', '3', '4', '5', '6', '7', '8']);
             $table->enum('urusan_utama', [
                 '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
                 '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
@@ -37,7 +38,13 @@ return new class extends Migration
             $table->date('waktu_uji');
             $table->date('waktu_penerapan');
             $table->enum('berkembang', ['1','2']); 
-            $table->text('rancang_bangun');
+            #Bagian dari rancang bangun
+            $table->text('dasar_hukum');
+            $table->text('masalah');
+            $table->text('isu_strategis');
+            $table->text('metode_baru');
+            $table->text('keunggulan');
+            $table->text('spesifikasi_inovasi');
             $table->text('tujuan');
             $table->text('manfaat');
             $table->string('anggaran')->nullable();

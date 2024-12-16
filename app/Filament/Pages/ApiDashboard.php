@@ -14,6 +14,11 @@ class ApiDashboard extends Page
 
     protected static ?string $navigationLabel = 'Akses API';
 
+    public function getTitle(): string
+    {
+        return 'Akses API'; 
+    }
+
     public function getViewData(): array
     {
         return [

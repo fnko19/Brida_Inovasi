@@ -91,13 +91,26 @@ class InovasiDaerahResource extends Resource
                         ])
                         ->required(),
                     Radio::make('prioritas')
-                        ->label('Prioritas')
+                        ->label('Program Prioritas')
                         ->options([
                             '1' => 'Prioritas',
-                            '2' => 'Tidak Prioritas',
+                            '2' => 'Bukan Prioritas',
                         ])
                         ->required()
                         ->inline(),
+                    Select::make('misi')
+                        ->label('Misi Beririsan')
+                        ->options([
+                            '1' => 'Memajukan layanan pendidikan, kesehatan, sosial keagamaan, dan kemasyarakatan berbasis kompetensi, berakhlak, dan berkearifan lokal',
+                            '2' => 'Melanjutkan hilirisasi pertanian untuk mencapai Swasembada Pangan dan lumbung pangan, serta sumber daya alam lainnya yang modern dan berdaya saing, berbasis ekonomi hijau dan ekonomi biru',
+                            '3' => 'Mengembangkan ekonomi masyarakat, pedesaan, dan daerah 3t (terluar, termiskin, tertinggal) untuk menekan angka pengangguran, kemiskinan, serta menangani gizi buruk dan stunting',
+                            '4' => 'Mengembangkan desa mandiri sebagai pusat pertumbuhan untuk pemerataan ekonomi dan pemberantasan kemiskinan',
+                            '5' => 'Mendorong investasi padat karya dan berwawasan lingkungan',
+                            '6' => 'Mempercepat dan memperkuat transformasi digital dan birokrasi yang berintegritas, adaptif, dan melayani',
+                            '7' => 'Memperkuat peran kepemudaan dalam pembangunan serta pelibatan kelompok marjinal, termasuk penyandang disabilitas',
+                            '8' => 'Memperkuat layanan transportasi (darat, laut, udara) dan infrastruktur yang berorientasi pada kesiapan dan ketahanan menghadapi situasi bencana, berkeadilan, serta pengembangan pariwisata untuk mendukung akselerasi pertumbuhan ekonomi',
+                        ])
+                        ->required(),
                     Placeholder::make('note')
                         ->label('Urusan Pemerintahan'),
                     Select::make('urusan_utama')
@@ -199,13 +212,105 @@ class InovasiDaerahResource extends Resource
                             '2' => 'Ya', 
                         ])
                         ->required(),
-                    Textarea::make('rancang_bangun')
-                        ->label('Rancang Bangun Inovasi')
+                    Placeholder::make('note1')
+                        ->label('Rancang Bangun'),
+                    Textarea::make('dasar_hukum')
+                        ->label('Dasar Hukum')
                         ->required()
-                        ->rows(5), 
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
+                    Textarea::make('masalah')
+                        ->label('Permasalahan')
+                        ->required()
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
+                    Textarea::make('isu_strategis')
+                        ->label('Isu Strategis')
+                        ->required()
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
+                    Textarea::make('metode_baru')
+                        ->label('Metode Pembaharuan')
+                        ->required()
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
+                    Textarea::make('keunggulan')
+                        ->label('Keunggulan dan Kebaharuan')
+                        ->required()
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
+                    Textarea::make('spesifikasi_inovasi')
+                        ->label('Tahapan Inovasi/Spesifikasi Inovasi')
+                        ->required()
+                        ->rows(5)
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ]),
                     Textarea::make('tujuan')
                         ->label('Tujuan Inovasi')
                         ->required()
+                        ->helperText('Minimal 300 kata')
+                        ->rules([
+                            'required',
+                            function ($attribute, $value, $fail) {
+                                $wordCount = str_word_count(strip_tags($value));
+                                if ($wordCount < 300) {
+                                    $fail('Harus memiliki minimal 300 kata. Saat ini hanya ada ' . $wordCount . ' kata.');
+                                }
+                            }
+                        ])
                         ->rows(5),
                     Textarea::make('manfaat')
                         ->label('Manfaat Inovasi')

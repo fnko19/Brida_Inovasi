@@ -11,8 +11,11 @@ class FaqWhatsApp extends Page
     protected static string $view = 'filament.pages.faq-whats-app';
 
     protected static ?string $navigationLabel = 'FAQ';
-
-    public static ?string $label = 'Ada Pertanyaan?';
-    //protected static ?string $navigationGroup = '';
+    
     protected static ?string $slug = 'FAQ';
+
+    public function getTitle(): string
+    {
+        return 'Ada Pertanyaan?'; 
+    }
 }
