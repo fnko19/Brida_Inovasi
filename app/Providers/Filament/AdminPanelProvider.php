@@ -32,6 +32,11 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->colors([
                 'primary' => '#90E0EF',
+                'danger' => Color::Red,
+                'gray' => Color::Zinc,
+                'info' => Color::Blue,
+                'ijo' => Color::Green,
+                'pdf' => '#800000',
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Poppins')

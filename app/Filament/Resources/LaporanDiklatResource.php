@@ -69,6 +69,7 @@ class LaporanDiklatResource extends Resource
                         '3' => 'Pelatihan Kepemimpinan Nasional II (PKN II)',
                         '4' => 'Pelatihan Kepemimpinan Nasional I (PKN I)',
                         '5' => 'Pelatihan Dasar CPNS',
+                        '6' => 'Pelatihan Kepemimpinan Non-Structural',
                     }),
             ])
             ->filters([
