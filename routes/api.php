@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/download-pdf/{id}', [InovasiController::class, 'downloadPdf'])->name('inovasi.download.pdf');
 Route::get('/export-excel/{id}', [InovasiController::class, 'exportExcel'])->name('export.excel');
+
