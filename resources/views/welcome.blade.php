@@ -31,7 +31,7 @@
         </p>
         
         <!-- Button -->
-        <a href="{{ url('/admin/login') }}" class="inline-block px-6 py-3 text-white bg-blue-500 hover:bg-blue-600 rounded-lg text-lg font-medium">
+        <a href="{{ route('login') }}" class="inline-block px-6 py-3 text-white bg-blue-500 hover:bg-blue-600 rounded-lg text-lg font-medium">
             Masuk Sekarang
         </a>
     </div>

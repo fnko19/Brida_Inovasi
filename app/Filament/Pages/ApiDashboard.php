@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use Filament\Pages\Page;
+use App\Filament\Widgets\InovasiOverview;
 
 class ApiDashboard extends Page
 {
@@ -28,4 +29,12 @@ class ApiDashboard extends Page
             'accessToken' => 'GET /api/token?key=axcassadlkasjdklasd&secret=1234567',
         ];
     }
+
+    public function getWidgets(): array
+    {
+        return [
+            InovasiOverview::class, 
+        ];
+    }
+
 }
