@@ -12,7 +12,9 @@
     @include('components.navbar')
 
     <!-- Konten halaman -->
+
     <div class="container-fluid pt-8 px-20">
+    <div class="container mt-4">
         @yield('content')
     </div>
 
