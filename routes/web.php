@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\InovasiController;
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/inovasi', [OverviewController::class, 'index']);
 
 Route::get('/landing', function () {
     return view('landing-page'); 
@@ -20,6 +22,10 @@ Route::get('/', function () {
 Route::get('/database-inovasi', function () {
     return view('filament.pages.database');
 })->name('database.inovasi');
+
+Route::get('/faq', function () {
+    return view('filament.pages.FAQ');
+})->name('faq');
 
 Route::get('/lomba-inovasi', function () {
     return view('filament.pages.lomba-inovasi');

@@ -15,9 +15,16 @@ use App\Http\Controllers\InovasiController;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+    return response()->json([
+        'username' => $request->user()->name,   
+    ]);
+});
+
     return $request->user();
 });
 
 Route::get('/download-pdf/{id}', [InovasiController::class, 'downloadPdf'])->name('inovasi.download.pdf');
 Route::get('/export-excel/{id}', [InovasiController::class, 'exportExcel'])->name('export.excel');
+
 

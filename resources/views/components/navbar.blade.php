@@ -11,7 +11,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="bg-white px-4 text-black shadow-md">
+    <nav class="bg-white px-12 text-black shadow-md">
         <div class="h-20 px-6 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
@@ -36,7 +36,7 @@
                     <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm right-0 w-[160px] mt-2 space-y-2 py-2 px-8 rounded">
                         <li><a href="{{ route('landing') }}" class="block hover:font-semibold p-2 rounded">Dashboard</a></li>
                         <li><a href="{{ route('arsip') }}" class="block hover:font-semibold p-2 rounded">Arsip</a></li>
-                        <li><a href="{{ route('FAQ') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
+                        <li><a href="{{ route('faq') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
                     </ul>
                 </li>
 
@@ -69,7 +69,7 @@
                 <!-- Konfigurasi -->
                 <li class="relative group">
                     <a href="#" class="hover:text-gray-700 font-semibold">Konfigurasi</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm mt-2 right-0 w-[200px]  space-y-2 py-2 px-4 rounded">
+                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm mt-2 right-0 w-[200px]  space-y-1 py-2 px-4 rounded">
                         <li><a href="{{ route('account') }}" class="block hover:font-semibold p-2 rounded">Account</a></li>
                         <li><a href="{{ route('daftar-opd') }}" class="block hover:font-semibold p-2 rounded">Daftar OPD</a></li>
                         <li><a href="{{ route('daftar-uptd') }}" class="block hover:font-semibold p-2 rounded">Daftar UPTD</a></li>
@@ -86,9 +86,9 @@
                     <ul class="absolute bg-blue-50 flex flex-column space-y-2 shadow-sm py-4 justify-between px-4 rounded right-0 top-full w-[160px] box-border hidden">
                         <li class="flex items-center">
                             @if (Auth::check())
-                                <span class="pb-2">halo {{ Auth::user()->name }}</span>
+                                <span class="pb-2 font-semibold">halo {{ Auth::user()->name }}</span>
                             @else
-                                <span class="pb-2">Guest</span>
+                                <span class="pb-2 font-semibold">Guest</span>
                             @endif
                         </li>
                         <li class="flex items-start">
@@ -108,10 +108,10 @@
         </div>
 
         <!-- Mobile Menu -->
-        <ul id="mobile-menu" class="lg:hidden hidden flex-col space-y-4 px-6 py-4 bg-white text-black shadow-sm">
+        <ul id="mobile-menu" class="lg:hidden hidden flex-col space-y-4 px-6 py-4 bg-blue-50 text-black">
             <li><a href="{{ route('landing') }}" class="block hover:font-semibold p-2">Dashboard</a></li>
             <li><a href="{{ route('arsip') }}" class="block hover:font-semibold p-2 rounded">Arsip</a></li>
-            <li><a href="{{ route('FAQ') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
+            <li><a href="{{ route('faq') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
             <li><a href="{{ route('profil-pemda') }}" class="block hover:font-semibold p-2 rounded">Profil Pemda</a></li>
             <li><a href="{{ route('inovasi-daerah') }}" class="block hover:font-semibold p-2 rounded">Inovasi Daerah</a></li>
             <li><a href="{{ route('inovasi-pemerintah-daerah') }}" class="block hover:font-semibold p-2 rounded">Inovasi Pemerintah Daerah</a></li>
