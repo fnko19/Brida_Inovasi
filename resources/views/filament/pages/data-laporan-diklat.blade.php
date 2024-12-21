@@ -3,8 +3,8 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 mt-16">
+        <h1 class="text-2xl font-bold pb-16">
             Data Diklat
         </h1>
 

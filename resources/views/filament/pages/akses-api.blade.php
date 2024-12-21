@@ -1,5 +1,7 @@
 @extends('layout.app') 
 
+@section('title', 'Inovasi BRIDA Kota Makassar')
+
 @section('content')
 <div class="py-6">
     <div class="space-y-8">

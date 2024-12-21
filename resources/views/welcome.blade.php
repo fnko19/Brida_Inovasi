@@ -14,6 +14,7 @@
         }
     </style>
 </head>
+@section('title', 'Inovasi BRIDA Kota Makassar')
 <body class="flex justify-center items-center min-h-screen">
     <div class="text-center max-w-3xl px-4  p-6 rounded-lg">
         <!-- Logo Section -->

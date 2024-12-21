@@ -69,7 +69,7 @@
                 <!-- Konfigurasi -->
                 <li class="relative group">
                     <a href="#" class="hover:text-gray-700 font-semibold">Konfigurasi</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm mt-2 right-0 w-[200px]  space-y-2 py-2 px-4 rounded">
+                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm mt-2 right-0 w-[200px]  space-y-1 py-2 px-4 rounded">
                         <li><a href="{{ route('account') }}" class="block hover:font-semibold p-2 rounded">Account</a></li>
                         <li><a href="{{ route('daftar-opd') }}" class="block hover:font-semibold p-2 rounded">Daftar OPD</a></li>
                         <li><a href="{{ route('daftar-uptd') }}" class="block hover:font-semibold p-2 rounded">Daftar UPTD</a></li>
