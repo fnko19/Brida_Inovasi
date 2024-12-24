@@ -46,6 +46,7 @@ class LaporanDiklatResource extends Resource
                             '3' => 'Pelatihan Kepemimpinan Nasional II (PKN II)',
                             '4' => 'Pelatihan Kepemimpinan Nasional I (PKN I)',
                             '5' => 'Pelatihan Dasar CPNS',
+                            '6' => 'Pelatihan Kepemimpinan Non-Structural',
                         ])
                         ->required(),
                     TextInput::make('judul_pelatihan')->label('Judul Proyek Perubahan / Aksi Perubahan')->required(),
@@ -76,7 +77,14 @@ class LaporanDiklatResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->color('info')
+                    ->tooltip('Edit'),
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->color('danger')
+                    ->tooltip('Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

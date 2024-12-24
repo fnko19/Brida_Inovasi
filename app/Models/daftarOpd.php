@@ -17,4 +17,9 @@ class daftarOpd extends Model
     {
         return $this->hasMany(daftarUptd::class, 'daftar_opd_id');
     }
+
+    public function usersOpds()
+    {
+        return $this->hasMany(User::class, 'daftar_opd_id'); // Sesuaikan dengan nama kolom foreign key pada tabel users
+    }
 }
