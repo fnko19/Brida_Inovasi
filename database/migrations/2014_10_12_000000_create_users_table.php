@@ -18,6 +18,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->enum('role', ['admin', 'user'])->default('user');  // Menambahkan kolom role
+            $table->enum('function', ['upt', 'opd'])->nullable();  // Menambahkan kolom function, nullable karena hanya user yang memilih
+            $table->foreignId('daftar_upt_id')->nullable()->constrained('daftar_uptds')->onDelete('set null');  // Menambahkan hubungan ke UPT, nullable karena admin tidak memilih
+            $table->foreignId('daftar_opd_id')->nullable()->constrained('daftar_opds')->onDelete('set null');  // Menambahkan hubungan ke OPD, nullable karena admin tidak memilih
             $table->timestamps();
         });
     }

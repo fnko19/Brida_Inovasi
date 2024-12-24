@@ -87,4 +87,9 @@ return [
 
     'livewire_loading_delay' => 'default',
 
+    'middleware' => [
+         // Pastikan pengguna sudah login
+        'check.admin',  // Middleware untuk memeriksa role admin
+    ],
+
 ];

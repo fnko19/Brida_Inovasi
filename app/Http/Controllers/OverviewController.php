@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InovasiDaerah;
 use Illuminate\Http\Request;
 
-class InovasiController extends Controller
+class OverviewController extends Controller
 {
     public function index()
     {
