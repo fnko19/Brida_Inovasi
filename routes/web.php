@@ -7,7 +7,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\InovasiController;
 use App\Http\Controllers\OverviewController;
-
+use Illuminate\Http\Request;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login');

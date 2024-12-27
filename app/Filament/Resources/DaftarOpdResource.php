@@ -27,6 +27,8 @@ class DaftarOpdResource extends Resource
 
     protected static ?string $navigationGroup = 'Konfigurasi';
 
+    protected static ?int $navigationSort = 3;
+
     public static ?string $label = 'Daftar OPD';
 
     public static function form(Form $form): Form

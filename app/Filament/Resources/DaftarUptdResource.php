@@ -26,6 +26,8 @@ class DaftarUptdResource extends Resource
     
     protected static ?string $navigationGroup = 'Konfigurasi';
 
+    protected static ?int $navigationSort = 3;
+
     public static ?string $label = 'Daftar UPTD';
 
     public static function form(Form $form): Form
