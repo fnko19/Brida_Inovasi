@@ -27,6 +27,8 @@ class LaporanDiklatResource extends Resource
 
     protected static ?string $navigationGroup = 'Laporan Diklat';
 
+    protected static ?int $navigationSort = 2;
+    
     public static ?string $label = 'Data Diklat';
 
     public static function form(Form $form): Form

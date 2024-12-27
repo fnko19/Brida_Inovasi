@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\UserDiklatResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\UserDiklatResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Illuminate\Database\Eloquent\Builder;
 
-class ListUsers extends ListRecords
+class ListUserDiklats extends ListRecords
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = UserDiklatResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -20,6 +20,7 @@ class ListUsers extends ListRecords
 
     protected function getTableQuery(): Builder
     {
-        return parent::getTableQuery()->where('role_diklat', 'bukan peserta diklat');
+        return parent::getTableQuery()->where('role_diklat', 'peserta diklat');
     }
+
 }

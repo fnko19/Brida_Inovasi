@@ -34,6 +34,8 @@ class InovasiDaerahResource extends Resource
 
     protected static ?string $navigationGroup = 'Database Inovasi Daerah';
 
+    protected static ?int $navigationSort = 1;
+
     public static ?string $label = 'Inovasi Pemerintah Daerah';
 
     public static function form(Form $form): Form

@@ -26,6 +26,8 @@ class User extends Authenticatable
         'function',
         'daftar_upt_id',
         'daftar_opd_id',
+        'role_diklat',
+        'sub_role',
     ];
 
     /**
