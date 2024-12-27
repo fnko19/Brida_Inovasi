@@ -13,10 +13,16 @@ class InovasiController extends Controller
     {
         $inovasi = inovasi_daerah::findOrFail($id);
 
+        $tahapanInovasiOptions = [
+            'inisiatif' => 'Inisiatif',
+            'uji_coba' => 'Uji Coba',
+            'penerapan' => 'Penerapan',
+        ];
+
         $pdf = Pdf::loadView('pdf.custom-header', [
             'nama_inovasi' => $inovasi->nama_inovasi,
             'dibuat_oleh' => $inovasi->dibuat_oleh,
-            'tahapan_inovasi' => $inovasi->tahapan_inovasi,
+            'tahapan_inovasi' => $tahapanInovasiOptions[$inovasi->tahapan_inovasi] ?? 'Tidak Diketahui', //$inovasi->tahapan_inovasi,
             'inisiator' => $inovasi->inisiator,
             'nama_inisiator' => $inovasi->nama_inisiator,
             'jenis_inovasi' => $inovasi->jenis_inovasi,
