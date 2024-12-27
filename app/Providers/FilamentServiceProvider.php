@@ -15,7 +15,7 @@ class FilamentServiceProvider extends ServiceProvider
         Filament::serving(function () {
             Filament::registerRenderHook(
                 'brand',
-                fn () => view('vendor.filament.components.logo') // Hapus ekstensi .blade.php
+                fn () => view('vendor.filament.components.logo') 
             );
         });
     }

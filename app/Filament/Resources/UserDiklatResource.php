@@ -2,38 +2,38 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserDiklatResource\Pages;
+use App\Filament\Resources\UserDiklatResource\RelationManagers;
 use App\Models\User;
 use App\Models\daftarOpd;
 use App\Models\daftarUptd;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class UserResource extends Resource
+class UserDiklatResource extends Resource
 {
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Akun';
+    protected static ?string $navigationLabel = 'Konfigurasi Akun';
 
-    protected static ?string $navigationGroup = 'Konfigurasi';
+    protected static ?string $navigationGroup = 'Laporan Diklat';
 
-    protected static ?int $navigationSort = 3;
-
-    public static ?string $label = 'Daftar Pengguna';
+    protected static ?int $navigationSort = 2;
+    
+    public static ?string $label = 'Konfigurasi Akun';
 
     public static function form(Form $form): Form
     {
@@ -106,41 +106,17 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name')->label('Name')->searchable(),
                 TextColumn::make('email')->label('Email'),
-                // TextColumn::make('role')->label('Role')->sortable(),
-                TextColumn::make('function')->label('Fungsi')->sortable(),
-                TextColumn::make('uptdss.nama_uptd')
-                    ->label('UPT')
-                    ->sortable()
-                    ->toggleable(),
+                TextColumn::make('sub_role')->label('Role'),
                 TextColumn::make('opdss.nama_opd')
                     ->label('OPD')
                     ->sortable()
                     ->toggleable(),
-                TextColumn::make('roles.name')->label('Role'),
             ])
             ->filters([
-                // SelectFilter::make('role')
-                //     ->label('Filter Role')
-                //     ->options([
-                //         'admin' => 'Admin',
-                //         'user' => 'User',
-                //     ]),
-                SelectFilter::make('function')
-                    ->label('Filter Fungsi')
-                    ->options([
-                        'upt' => 'UPT',
-                        'opd' => 'OPD',
-                    ]),
+                //
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
-                    ->label('')
-                    ->color('info')
-                    ->tooltip('Edit'),
-                Tables\Actions\DeleteAction::make()
-                    ->label('')
-                    ->color('danger')
-                    ->tooltip('Hapus'),
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -159,9 +135,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => Pages\ListUserDiklats::route('/'),
+            'create' => Pages\CreateUserDiklat::route('/create'),
+            'edit' => Pages\EditUserDiklat::route('/{record}/edit'),
         ];
     }
 }
