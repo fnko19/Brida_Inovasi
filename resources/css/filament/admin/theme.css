@@ -31,7 +31,8 @@ theme: {
 
 /** sidebar */
 .fi-sidebar {
-    @apply bg-gradient-to-b dark:from-gray-950 dark:to-gray-800 from-primary-600 via-primary-500 to-sky-600 dark:bg-transparent;
+    background-color: #90e0ef;
+    /* @apply bg-gradient-to-b dark:from-gray-950 dark:to-gray-800 from-primary-600 via-primary-500 to-sky-600 dark:bg-transparent; */
 }
 
 .fi-sidebar-group div span {

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DokumenIndikatorResource\Pages;
-use App\Filament\Resources\DokumenIndikatorResource\RelationManagers;
-use App\Models\DokumenIndikator;
+use App\Filament\Resources\Indikator1FileResource\Pages;
+use App\Filament\Resources\Indikator1FileResource\RelationManagers;
+use App\Models\Indikator1File;
+use App\Models\Indikator1;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\DatePicker;
@@ -16,25 +17,15 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\Select;
-use App\Models\IndikatorProfilDaerah;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\Hidden;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DokumenIndikatorResource extends Resource
+class Indikator1FileResource extends Resource
 {
-    protected static ?string $model = DokumenIndikator::class;
-
-    protected static ?string $navigationGroup = 'Database Inovasi Daerah';
-
-    protected static ?int $navigationSort = 1;
-
-    protected static ?string $navigationLabel = 'Dokumen Indikator';
-
-    public static ?string $label = 'Dokumen Pendukung Indikator Profil Daerah';
+    protected static ?string $model = Indikator1File::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -59,12 +50,12 @@ class DokumenIndikatorResource extends Resource
                         ->required(),
                     Select::make('indikator_id')
                         ->label('Pilih Indikator')
-                        ->options(IndikatorProfilDaerah::pluck('nama_indikator', 'id'))
+                        ->options(Indikator1::pluck('nama_inovasi', 'id'))
                         ->default(function () {
                             // Ambil nilai indikator_id dari URL atau session
                             return request()->query('indikator') 
                                 ? request()->query('indikator') 
-                                : session('last_selected_indikator_id', IndikatorProfilDaerah::first()->id);
+                                : session('last_selected_indikator_id', Indikator1::first()->id);
                         })
                         //->disabled(),
                 ])
@@ -74,6 +65,11 @@ class DokumenIndikatorResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->header(fn () => new \Illuminate\Support\HtmlString(
+            '<div class="p-4 bg-yellow-100 rounded-md text-sm text-yellow-800">
+                <strong>Dokumen Pendukung Berupa:</strong> Perda atau Perkada atau SK Kepala Daerah atau SK Kepala Perangkat Daerah serta halaman yang memuat nama inovasi yang sah dan valid serta sesuai pada tahun saat penerapan (pdf).
+            </div>'
+        ))
             ->columns([
                 TextColumn::make('nomor_surat')->label('Nomor Surat')->sortable(),
                 TextColumn::make('tgl_surat')->label('Tanggal Surat')->date(),
@@ -82,7 +78,7 @@ class DokumenIndikatorResource extends Resource
             ->filters([
                 SelectFilter::make('indikator_id')
                     ->label('Indikator')
-                    ->options(IndikatorProfilDaerah::pluck('nama_indikator', 'id')),
+                    ->options(Indikator1::pluck('nama_inovasi', 'id')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
@@ -113,9 +109,10 @@ class DokumenIndikatorResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDokumenIndikators::route('/'),
-            'create' => Pages\CreateDokumenIndikator::route('/create'),
-            'edit' => Pages\EditDokumenIndikator::route('/{record}/edit'),
+            'index' => Pages\ListIndikator1Files::route('/'),
+            'create' => Pages\CreateIndikator1File::route('/create'),
+            'edit' => Pages\EditIndikator1File::route('/{record}/edit'),
         ];
     }
+
 }

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\InovasiDaerahResource\Pages;
 use App\Filament\Resources\InovasiDaerahResource\RelationManagers;
 use App\Models\inovasi_daerah;
+use App\Models\Indikator1;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -158,7 +159,7 @@ class InovasiDaerahResource extends Resource
                             '38' => 'Fungsi lain sesuai dengan Ketentuan Peraturan Perundang-undangan',
                         ])
                         ->required(),
-                    MultiSelect::make('urusan_irisan')
+                    Select::make('urusan_irisan')
                         ->label('Urusan Lain yang Beririsan')
                         ->options([
                             '1' => 'Pendidikan',
@@ -200,6 +201,7 @@ class InovasiDaerahResource extends Resource
                             '37' => 'Penelitian dan Pengembangan', 
                             '38' => 'Fungsi lain sesuai dengan Ketentuan Peraturan Perundang-undangan',
                         ])
+                        ->multiple()
                         ->required(),
                     DatePicker::make('waktu_uji')
                         ->label('Waktu Uji Coba Inovasi Daerah')
@@ -215,48 +217,94 @@ class InovasiDaerahResource extends Resource
                         ])
                         ->required(),
                     Placeholder::make('note1')
-                        ->label('Rancang Bangun'),
+                        ->label('Rancang Bangun')
+                        ->helperText('Keseluruhan Rancang Bangun (Dasar Hukum, Permasalahan, Isu strategis, Metode Pembaharuan, Kebaharuan/Keunggulan, dan Cara Kerja Inovasi) itu Minimal 300 kata')
+                        ->extraAttributes(['class' => 'text-2xl font-bold']),
                     Textarea::make('dasar_hukum')
                         ->label('Dasar Hukum')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
+                        ->helperText(''),
                     Textarea::make('masalah')
                         ->label('Permasalahan')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
-                    Textarea::make('isu_strategis')
+                        ->helperText(''),
+                    Placeholder::make('note2')
                         ->label('Isu Strategis')
+                        ->extraAttributes(['class' => 'text-2xl font-bold']),
+                    Textarea::make('isu_global')
+                        ->label('Isu Global')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
+                        ->helperText(''),
+                    Textarea::make('isu_nasional')
+                        ->label('Isu Nasional (Di Indonesia)')
+                        ->required()
+                        ->rows(5)
+                        ->helperText(''),
+                    Textarea::make('isu_lokal')
+                        ->label('Isu Lokal')
+                        ->required()
+                        ->rows(5)
+                        ->helperText(''),
+                    // Textarea::make('isu_strategis')
+                    //     ->label('Isu Strategis')
+                    //     ->required()
+                    //     ->rows(5)
+                    //     ->helperText('Minimal 300 kata'),
                     Textarea::make('metode_baru')
                         ->label('Metode Pembaharuan')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
+                        ->helperText(''),
                     Textarea::make('keunggulan')
                         ->label('Keunggulan dan Kebaharuan')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
+                        ->helperText(''),
                     Textarea::make('spesifikasi_inovasi')
-                        ->label('Tahapan Inovasi/Spesifikasi Inovasi')
+                        ->label('Cara Kerja Inovasi/Spesifikasi Inovasi')
                         ->required()
                         ->rows(5)
-                        ->helperText('Minimal 300 kata'),
-                    Textarea::make('tujuan')
+                        ->helperText(''),
+                    Placeholder::make('note3')
                         ->label('Tujuan Inovasi')
+                        ->extraAttributes(['class' => 'text-2xl font-bold']),
+                    Textarea::make('tujuan_pendek')
+                        ->label('Tujuan Jangka Pendek')
                         ->required()
-                        ->helperText('Minimal 300 kata')
                         ->rows(5),
+                    Textarea::make('tujuan_menengah')
+                        ->label('Tujuan Jangka Menengah')
+                        ->required()
+                        ->rows(5),
+                    Textarea::make('tujuan_panjang')
+                        ->label('Tujuan Jangka Panjang')
+                        ->required()
+                        ->rows(5),
+                    // Textarea::make('tujuan')
+                    //     ->label('Tujuan Inovasi')
+                    //     ->required()
+                    //     ->helperText('Minimal 300 kata')
+                    //     ->rows(5),
                     Textarea::make('manfaat')
                         ->label('Manfaat Inovasi')
                         ->required()
                         ->rows(5),
+                    Placeholder::make('note4')
+                        ->label('Hasil Inovasi')
+                        ->extraAttributes(['class' => 'text-2xl font-bold']),
+                    Textarea::make('hasil_inovasi_sebelum')
+                        ->label('Hasil Inovasi Sebelum Implementasi')
+                        ->required()
+                        ->rows(5),
+                    Textarea::make('hasil_inovasi_setelah')
+                        ->label('Hasil Inovasi Setelah Implementasi')
+                        ->required()
+                        ->rows(5),
                     FileUpload::make('anggaran')
-                        ->label('Anggaran (Jika Ada')
+                        ->label('Anggaran (Jika Ada)')
                         ->directory('uploads')
                         ->disk('local')
                         ->maxSize(2048)
@@ -279,6 +327,9 @@ class InovasiDaerahResource extends Resource
                         ->disk('local')
                         ->maxSize(2048)
                         ->helperText('*) Dokumen PDF, Maksimal 2MB'),
+                        // TextInput::make('skor_kematangan')
+                        // ->label('Skor Kematangan')
+                        // ->disabled(), // Membuat field ini hanya untuk menampilkan nilai
                 ])
             ]);
     }
@@ -347,6 +398,13 @@ class InovasiDaerahResource extends Resource
                     ->label('Waktu Penerapan Inovasi Daerah')
                     ->dateTime('d M Y') 
                     ->sortable(),
+                TextColumn::make('skor_kematangan')
+                    ->label('Skor Kematangan')
+                    ->getStateUsing(fn ($record) => $record->skor_kematangan)
+                    ->sortable(),
+                // TextColumn::make('skor_kematangan')
+                //     ->label('Skor Kematangan')
+                //     ->sortable(),
             ])
             ->filters([
                 //
@@ -374,6 +432,24 @@ class InovasiDaerahResource extends Resource
                     ->icon('heroicon-o-document-chart-bar')
                     ->color('ijo')
                     ->tooltip('Download Excel'),
+                Action::make('viewDocuments')
+                    ->label('')
+                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator1s.index', ['inovasi' => $record->id]))
+                    ->icon('heroicon-o-document-text')
+                    ->color('indikator')
+                    ->tooltip('Indikator Pertama'),
+                Action::make('viewDocuments2')
+                    ->label('')
+                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator2s.index', ['inovasi2' => $record->id]))
+                    ->icon('heroicon-o-document-text')
+                    ->color('indikator')
+                    ->tooltip('Indikator Kedua'),
+                Action::make('viewDocuments3')
+                    ->label('')
+                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator3s.index', ['inovasi3' => $record->id]))
+                    ->icon('heroicon-o-document-text')
+                    ->color('indikator')
+                    ->tooltip('Indikator Ketiga'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
