@@ -37,11 +37,12 @@ class AdminPanelProvider extends PanelProvider
                 'gray' => Color::Zinc,
                 'info' => Color::Blue,
                 'ijo' => Color::Green,
+                'indikator' => '#000000',
                 'pdf' => '#800000',
             ])
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Poppins')
-            ->brandLogo(asset('images/logo-brida.png'))
+            ->brandLogo(asset('images/removeLogo.png'))
             ->brandLogoHeight('2rem')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
