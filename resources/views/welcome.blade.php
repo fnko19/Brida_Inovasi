@@ -19,7 +19,7 @@
     <div class="text-center max-w-3xl px-4  p-6 rounded-lg">
         <!-- Logo Section -->
         <div class="flex justify-center gap-6 mb-6">
-            <img src="{{ asset('images/logo-brida.png') }}" alt="Logo BRIDA" class="h-20">
+            <img src="{{ asset('images/removeLogo.png') }}" alt="Logo BRIDA" class="h-20">
             <img src="{{ asset('images/logo-makassar.png') }}" alt="Logo Makassar" class="h-20">
         </div>
         
