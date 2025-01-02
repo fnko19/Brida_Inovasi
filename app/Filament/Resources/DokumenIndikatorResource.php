@@ -21,6 +21,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Hidden;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DokumenIndikatorResource extends Resource
@@ -54,17 +55,18 @@ class DokumenIndikatorResource extends Resource
                     FileUpload::make('file_path')
                         ->label('Upload File')
                         ->directory('uploads')
-                        ->mimes('pdf')
-                        ->saveAs(function ($file) {
-                            return $file->getClientOriginalName();
-                        }) 
+                        ->acceptedFileTypes(['application/pdf'])
                         ->required(),
                     Select::make('indikator_id')
                         ->label('Pilih Indikator')
                         ->options(IndikatorProfilDaerah::pluck('nama_indikator', 'id'))
                         ->default(function () {
-                            return session('last_selected_indikator_id', IndikatorProfilDaerah::first()->id);
+                            // Ambil nilai indikator_id dari URL atau session
+                            return request()->query('indikator') 
+                                ? request()->query('indikator') 
+                                : session('last_selected_indikator_id', IndikatorProfilDaerah::first()->id);
                         })
+                        //->disabled(),
                 ])
             ]);
     }
