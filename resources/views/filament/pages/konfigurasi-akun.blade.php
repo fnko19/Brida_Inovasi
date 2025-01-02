@@ -3,25 +3,11 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 py-2">
+        <h1 class="text-xl font-bold pb-16">
             Konfigurasi Akun
         </h1>
-
-               <div class="flex justify-between items-center mt-6 mb-4">
-            <div class="flex items-center space-x-4">
-                <!-- Kotak Cari Username -->
-                <input type="text" class="form-control w-[200px]" placeholder="Cari username" />
-
-                             <div class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">
-                    <span>Cari</span>
-                </div>
-            </div>
-
-          
-            <button class="btn btn-primary">Tambah Account</button>
-        </div>
-
+       
         <div class="card bg-blue-50 p-4">
             <div class="card-body">
                 <table class="table table-bordered table-striped w-full">

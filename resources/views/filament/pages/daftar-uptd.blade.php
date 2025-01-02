@@ -3,7 +3,7 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-16">
+    <div class="space-y-4 py-2">
         <h1 class="text-2xl font-bold pb-16">
             Daftar UPTD
         </h1>
@@ -13,13 +13,6 @@
                 <div class="card-body">
                 <h4 class="font-bold text-lg">Kota Makassar</h4>
                 
-                <div class="d-flex justify-between items-center mt-6 mb-4">
-   
-                <input type="text" class="form-control h-10 w-[200px] ml-auto mr-4" placeholder="pencarian" />
-                
-                
-                <button class="btn btn-primary">Tambah Daftar UPTD</button>
-                </div>
 
                 <table class="table table-bordered table-striped w-full">
                     <thead class="table-light">

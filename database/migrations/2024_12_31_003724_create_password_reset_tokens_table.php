@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('indikator_profil_daerahs', function (Blueprint $table) {
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_indikator');
-            $table->text('informasi')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('indikator_profil_daerahs');
+        Schema::dropIfExists('password_reset_tokens');
     }
 };

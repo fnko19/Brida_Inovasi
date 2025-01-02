@@ -3,8 +3,8 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 py-4">
+        <h1 class="text-xl font-bold pb-4">
             Inovasi Pemerintah Daerah
         </h1>
         <div class="pb-4 mb-2">
@@ -17,7 +17,7 @@
         </div>    
 
             <div class="flex justify-end pt-3">
-                <button class="bg-blue-500 px-3 py-2 text-white font-semibold rounded-md">Unduh XLS</button>
+                <button class="bg-blue-500 px-3 py-1 text-white font-semibold text-sm  rounded-md">Unduh XLS</button>
             </div>
 
             <div class="mt-4">
@@ -42,7 +42,6 @@
                 <h4 class="font-bold text-lg">Kota Makassar</h4>
                 
                 <div class="d-flex justify-content-between align-items-center mt-6 mb-4">
-                    <input type="text" class="form-control w-25" placeholder="pencarian" />
                     <button class="btn btn-primary">Tambah Inovasi Pemerintah Daerah</button>
                 </div>
 

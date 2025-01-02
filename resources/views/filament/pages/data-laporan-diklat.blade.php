@@ -3,8 +3,8 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-16">
-        <h1 class="text-2xl font-bold pb-16">
+    <div class="space-y-4 py-2">
+        <h1 class="text-xl font-bold pb-14">
             Data Diklat
         </h1>
 
@@ -24,13 +24,6 @@
                                     <option value="6">Kepala Daerah</option>
                                 </select>
                             </div>
-
-                            <div>
-                                <label for="pelatihan" class="form-label font-semibold ">Cari Laporan</label>
-                                <input type="text" class="form-control h-10 w-250" placeholder="pencarian" />
-                            </div>
-
-
                             
                         </div>
 

@@ -3,10 +3,10 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-<div class="py-6">
+<div class="pt-2 pb-6">
     <div class="space-y-8">
         <!-- Judul Halaman -->
-        <h2 class="text-2xl font-bold">Akses API</h2>
+        <h2 class="text-xl font-bold">Akses API</h2>
         
         <!-- API KEY -->
         <div>

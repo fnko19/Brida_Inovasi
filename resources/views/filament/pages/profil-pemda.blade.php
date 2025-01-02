@@ -3,14 +3,14 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold">
+    <div class="space-y-4 py-4">
+        <h1 class="text-xl font-bold">
             Profil Pemda
         </h1>
 
-        <div class="pt-4 pb-6 flex items-center justify-between">
-            <a href="#" class="text-lg text-blue-700 hover:underline">Unduh Pakta Integritas</a>
-            <button class="bg-blue-500 px-3 py-2  text-white font-semibold rounded-md">Kirim Pakta Integritas Baru</button>
+        <div class="pt-2 pb-6 flex items-center justify-between">
+            <a href="#" class=" text-blue-700 hover:underline">Unduh Pakta Integritas</a>
+            <button class="bg-blue-500 px-3 py-1 text-white font-semibold rounded-md">Kirim Pakta Integritas Baru</button>
         </div>      
         
         <div class="card border-2 border-gray-300 shadow-md pt-3 py-12 px-4 bg-blue-100">

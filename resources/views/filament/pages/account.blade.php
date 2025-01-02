@@ -3,13 +3,11 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-0">
-            Account
+    <div class="space-y-4 py-2">
+        <h1 class="text-xl font-bold pb-16">
+                    Account
         </h1>
-        <div class="py-4">
-            <button class="btn btn-primary">Tambah Account</button>
-        </div>
+        
         <div class="card bg-blue-50 p-4">
             <div class="card-body">
                 <div class="d-flex justify-between items-center mt-6 mb-4">
@@ -22,7 +20,6 @@
                             <th class="align-top text-center">Username</th>
                             <th class="align-top text-center">Email</th>
                             <th class="align-top text-center">Role</th>
-                            <th class="align-top text-center">Ubah data</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,72 +28,28 @@
                             <td>iga2024.Tangkala1.makassar</td>
                             <td>akbarbone2018@gmail.com</td>
                             <td>upt</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                   
-                                    <a href="#" class="btn btn-sm bg-blue-500 text-white rounded px-2 py-1">
-                                        Ubah Data
-                                    </a>
-                                    <!-- Hapus Data Button -->
-                                    <a href="#" class="btn btn-sm bg-red-500 text-white rounded px-2 py-1">
-                                        Hapus Data
-                                    </a>
-                                </div>
-                            </td>
+                        
                         </tr>
                         <tr class="bg-white text-center">
                             <td>Akbar., S.Pd</td>
                             <td>iga2024.Tangkala1.makassar</td>
                             <td>akbarbone2018@gmail.com</td>
                             <td>upt</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                   
-                                    <a href="#" class="btn btn-sm bg-blue-500 text-white rounded px-2 py-1">
-                                        Ubah Data
-                                    </a>
-                                    <!-- Hapus Data Button -->
-                                    <a href="#" class="btn btn-sm bg-red-500 text-white rounded px-2 py-1">
-                                        Hapus Data
-                                    </a>
-                                </div>
-                            </td>
+                        
                         </tr>
                         <tr class="bg-white text-center">
                             <td>Akbar., S.Pd</td>
                             <td>iga2024.Tangkala1.makassar</td>
                             <td>akbarbone2018@gmail.com</td>
                             <td>upt</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                   
-                                    <a href="#" class="btn btn-sm bg-blue-500 text-white rounded px-2 py-1">
-                                        Ubah Data
-                                    </a>
-                                    <!-- Hapus Data Button -->
-                                    <a href="#" class="btn btn-sm bg-red-500 text-white rounded px-2 py-1">
-                                        Hapus Data
-                                    </a>
-                                </div>
-                            </td>
+                        
                         </tr>
                         <tr class="bg-white text-center">
                             <td>Akbar., S.Pd</td>
                             <td>iga2024.Tangkala1.makassar</td>
                             <td>akbarbone2018@gmail.com</td>
                             <td>upt</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                   
-                                    <a href="#" class="btn btn-sm bg-blue-500 text-white rounded px-2 py-1">
-                                        Ubah Data
-                                    </a>
-                                    <!-- Hapus Data Button -->
-                                    <a href="#" class="btn btn-sm bg-red-500 text-white rounded px-2 py-1">
-                                        Hapus Data
-                                    </a>
-                                </div>
-                            </td>
+                
                         </tr>
                         
                     </tbody>

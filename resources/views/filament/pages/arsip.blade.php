@@ -3,14 +3,14 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 pt-4 pb-12">
+        <h1 class="text-xl font-bold pb-2">
             Arsip
         </h1>
          
 
-            <div class="flex justify-end pt-3">
-                <button class="bg-blue-500 px-3 py-2 text-white font-semibold rounded-md">Unduh XLS</button>
+            <div class="flex justify-end pt-2">
+                <button class="bg-blue-500 px-3 py-1 text-sm text-white font-semibold rounded-md">Unduh XLS</button>
             </div>
 
             <div class="mt-4">

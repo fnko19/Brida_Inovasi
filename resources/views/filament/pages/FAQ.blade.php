@@ -3,8 +3,8 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold">
+    <div class="space-y-4 py-4">
+        <h1 class="text-xl font-bold">
             FAQ
         </h1>
         <p class="text-gray-600">
@@ -54,7 +54,7 @@
             </p>
 
             <!-- WhatsApp Button -->
-            <a href="https://wa.me/6282191190039?text=Halo%20Admin%20Saya%20butuh%20bantuan%20beberapa%20pertanyaan%20lain%20terkait%20BRIDA" target="_blank" class="inline-flex items-center px-4 py-2 font-semibold bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 focus:outline-none">
+            <a href="https://wa.me/6282191190039?text=Halo%20Admin%20Saya%20butuh%20bantuan%20beberapa%20pertanyaan%20lain%20terkait%20BRIDA" target="_blank" class="inline-flex px-3 py-1 font-semibold bg-blue-500 text-center text-white rounded-lg shadow hover:bg-blue-600">
                 <i class="fas fa-whatsapp mr-2"></i> Hubungi Admin
             </a>
         </div>

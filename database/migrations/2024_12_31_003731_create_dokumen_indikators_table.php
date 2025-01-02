@@ -13,14 +13,7 @@ return new class extends Migration
     {
         Schema::create('dokumen_indikators', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('indikator_id');  // Define this once
-            $table->string('nomor_surat');
-            $table->date('tgl_surat');
-            $table->string('tentang');
-            $table->string('file_path')->nullable();
             $table->timestamps();
-        
-            $table->foreign('indikator_id')->references('id')->on('indikator_profil_daerahs');
         });
     }
 

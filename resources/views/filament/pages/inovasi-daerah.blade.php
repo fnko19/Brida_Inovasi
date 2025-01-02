@@ -3,8 +3,8 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 py-4">
+        <h1 class="text-xl font-bold pb-4">
             Inovasi Daerah
         </h1>
         <div class="pb-4 mb-2">
@@ -20,49 +20,49 @@
                 <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
                     <img src="{{ asset('images/a.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Inovasi yang Dilaporkan</h3>
+                        <h3 class="font-bold">Inovasi yang Dilaporkan</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
                 <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
                     <img src="{{ asset('images/b.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Inovasi yang Dikirim</h3>
+                        <h3 class="font-bold">Inovasi yang Dikirim</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
                 <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
                     <img src="{{ asset('images/c.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Skor Jumlah Inovasi</h3>
+                        <h3 class="font-bold">Skor Jumlah Inovasi</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
                 <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
                     <img src="{{ asset('images/d.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Inisiatif</h3>
+                        <h3 class="font-bold">Inisiatif</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
                 <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
                     <img src="{{ asset('images/f.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Uji Coba</h3>
+                        <h3 class="font-bold">Uji Coba</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
                 <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
                     <img src="{{ asset('images/g.png') }}" alt="inovasi daerah" class="w-14 h-14">
                     <div>
-                        <h3 class="font-bold text-lg">Penerapan</h3>
+                        <h3 class="font-bold">Penerapan</h3>
                         <p class="text-2xl font-bold">0</p>
                     </div>
                 </div>
             </div>
 
             <div class="flex justify-end pt-3">
-                <button class="bg-blue-500 px-3 py-2 text-white font-semibold rounded-md">Unduh XLS</button>
+                <button class="bg-blue-500 px-3 py-1 text-sm text-white font-semibold rounded-md">Unduh XLS</button>
             </div>
 
             <div class="mt-4">
@@ -160,16 +160,16 @@
                 <table class="table table-bordered table-striped w-full">
                     <thead class="table-light">
                         <tr>
-                            <th class="align-top font-normal">#</th>
-                            <th class="align-top font-normal">Nama Pemda</th>
-                            <th class="align-top font-normal">Nama Inovasi*</th>
-                            <th class="align-top font-normal">Tahapan Inovasi*</th>
-                            <th class="align-top font-normal">Nama Inisiator*</th>
-                            <th class="align-top font-normal">Urusan Pemerintahan Utama</th>
-                            <th class="align-top font-normal">Waktu Uji Coba Inovasi Daerah*</th>
-                            <th class="align-top font-normal">Waktu Penerapan Inovasi Daerah*</th>
-                            <th class="align-top font-normal">Estimasi Skor Kematangan</th>
-                            <th class="align-top font-normal">Aksi</th>
+                            <th class="align-top font-semibold">#</th>
+                            <th class="align-top font-semibold">Nama Pemda</th>
+                            <th class="align-top font-semibold">Nama Inovasi*</th>
+                            <th class="align-top font-semibold">Tahapan Inovasi*</th>
+                            <th class="align-top font-semibold">Nama Inisiator*</th>
+                            <th class="align-top font-semibold">Urusan Pemerintahan Utama</th>
+                            <th class="align-top font-semibold">Waktu Uji Coba Inovasi Daerah*</th>
+                            <th class="align-top font-semibold">Waktu Penerapan Inovasi Daerah*</th>
+                            <th class="align-top font-semibold">Estimasi Skor Kematangan</th>
+                            <th class="align-top font-semibold w-[200]">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -211,7 +211,7 @@
                             <td class="align-top font-normal">01/05/2023</td>
                             <td class="align-top font-normal">109.00</td>
                             <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
+                                <div class="flex justify-center">
                                     <a href="#" class="btn btn-sm">
                                         <img src="{{ asset('images/1.png') }}" alt="Eye" width="20" height="20">
                                     </a>

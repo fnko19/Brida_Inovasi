@@ -11,25 +11,25 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="bg-white px-12 text-black shadow-md">
-        <div class="h-20 px-6 flex items-center justify-between">
+    <nav class="bg-white px-16 text-black shadow-md">
+        <div class="h-16 px-6 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <img src="{{ asset('images/logo-brida.png') }}" alt="Logo" class="w-14 h-14">
-                <span class="text-md ps-6 font-bold">
+                <img src="{{ asset('images/logo-brida.png') }}" alt="Logo" class="w-12 h-12">
+                <span class="text-sm ps-6 font-bold">
                     DASHBOARD BADAN RISET DAN <br> INOVASI DAERAH MAKASSAR
                 </span>
             </div>
 
             <!-- Hamburger Menu Icon (Responsive) -->
             <div class="lg:hidden">
-                <button id="menu-toggle" class="text-3xl focus:outline-none">
+                <button id="menu-toggle" class="text-2xl focus:outline-none">
                     &#9776; <!-- Hamburger Icon -->
                 </button>
             </div>
 
             <!-- Navigation Menu -->
-            <ul id="menu" class="hidden lg:flex space-x-8 items-center text-lg">
+            <ul id="menu" class="hidden lg:flex space-x-8 items-center text-sm">
                 <!-- Dashboard -->
                 <li class="relative group">
                     <a href="#" class="hover:text-blue-600 font-semibold">Dashboard</a>
