@@ -28,6 +28,7 @@ class User extends Authenticatable
         'daftar_opd_id',
         'role_diklat',
         'sub_role',
+        'kecamatan',
     ];
 
     /**

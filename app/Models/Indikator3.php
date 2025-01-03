@@ -21,7 +21,7 @@ class Indikator3 extends Model
         return $this->belongsTo(inovasi_daerah::class, 'inovasi3_id');
     }
 
-    public function dokumenTua()
+    public function dokumenTiga()
     {
         return $this->hasMany(Indikator3File::class, 'indikator3_id');
     }
