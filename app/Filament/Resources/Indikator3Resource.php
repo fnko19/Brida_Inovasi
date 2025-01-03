@@ -28,6 +28,8 @@ class Indikator3Resource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Data Indikator';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -37,6 +39,7 @@ class Indikator3Resource extends Resource
                         ->label('Nama Inovasi Terkait')
                         ->required(),
                     Select::make('parameter3')
+                        ->label('Parameter')
                         ->options([
                             'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0 (Tahun Berjalan)' => 'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-0 (Tahun Berjalan)',
                             'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-1 atau T-2' => 'Anggaran dialokasikan pada kegiatan penerapan inovasi di T-1 atau T-2',
@@ -54,6 +57,7 @@ class Indikator3Resource extends Resource
                         ->reactive()
                         ->required(),
                     TextInput::make('bobot3')
+                        ->label('Bobot')
                         ->disabled()
                         ->default(fn ($get) => $get('bobot3')) 
                         ->required(),
@@ -100,7 +104,7 @@ class Indikator3Resource extends Resource
                 Tables\Actions\EditAction::make(),
                 Action::make('viewDocuments')
                     ->label('')
-                    ->url(fn (Indikator1 $record) => route('filament.admin.resources.indikator3-files.index', ['dokumen' => $record->id]))
+                    ->url(fn (Indikator3 $record) => route('filament.admin.resources.indikator3-files.index', ['dokumen' => $record->id]))
                     ->icon('heroicon-o-document-text')
                     ->tooltip('Lihat Dokumen'),
             ])

@@ -15,6 +15,9 @@ class ListIndikator3s extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('back')
+                ->label('Kembali')
+                ->url(route('filament.admin.resources.inovasi-daerahs.index')),
         ];
     }
 

@@ -55,6 +55,26 @@ class UserDiklatResource extends Resource
                     //     ])
                     //     ->required()
                     //     ->reactive(),
+                    Select::make('kecamatan')
+                    ->label('Kecamatan')
+                    ->options([
+                        'Wajo' => 'Wajo',
+                        'Biringkanaya' => 'Biringkanaya',
+                        'Tallo' => 'Tallo',
+                        'Makassar' => 'Makassar',
+                        'Manggala' => 'Manggala',
+                        'Panakkukang' => 'Panakkukang',
+                        'Rappocini' => 'Rappocini',
+                        'Ujung Tanah' => 'Ujung Tanah',
+                        'Kepulauan Sangkarrang' => 'Kepulauan Sangkarrang',
+                        'Mariso' => 'Mariso',
+                        'Tamalanrea' => 'Tamalanrea',
+                        'Bontoala' => 'Bontoala',
+                        'Ujung Pandang' => 'Ujung Pandang',
+                        'Mamajang' => 'Mamajang',
+                        'Tamalate' => 'Tamalate'
+                    ])
+                    ->nullable(),
                     Select::make('function') 
                         ->label('Fungsi')
                         ->nullable()
@@ -111,6 +131,7 @@ class UserDiklatResource extends Resource
                     ->label('OPD')
                     ->sortable()
                     ->toggleable(),
+                TextColumn::make('kecamatan')->label('Kecamatan'),
             ])
             ->filters([
                 //

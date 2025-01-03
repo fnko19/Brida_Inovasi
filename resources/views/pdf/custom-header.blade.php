@@ -101,11 +101,8 @@
         <p><strong>1.10. Misi Beririsan:</strong></p>
         <p>{{ $misi }}</p>
 
-        <p><strong>1.11. Urusan Utama:</strong></p>
+        <p><strong>1.11. Urusan Pemerintahan Terkait Inovasi:</strong></p>
         <p>{{ $urusan_utama }}</p>
-
-        <!-- <p><strong>1.12. Urusan Beririsan:</strong></p>
-        <p>{{ implode(', ', $urusan_irisan) }}</p> -->
 
         <p><strong>1.12. Waktu Uji:</strong></p>
         <p>{{ $waktu_uji }}</p>
@@ -156,6 +153,7 @@
                     <th style="border: 1px solid black; padding: 5px;">No.</th>
                     <th style="border: 1px solid black; padding: 5px;">Indikator SPD</th>
                     <th style="border: 1px solid black; padding: 5px;">Informasi</th>
+                    <th style="border: 1px solid black; padding: 5px;">Bukti Dukung</th>
                 </tr>
             </thead>
             <tbody>
@@ -164,6 +162,13 @@
                     <td style="border: 1px solid black; padding: 5px;">{{ $indikator['no'] }}</td>
                     <td style="border: 1px solid black; padding: 5px;">{{ $indikator['indikator'] }}</td>
                     <td style="border: 1px solid black; padding: 5px;">{{ $indikator['informasi'] }}</td>
+                    <td style="border: 1px solid black; padding: 5px;">
+                @if(isset($indikator['bukti_dukung']) && !empty($indikator['bukti_dukung']))
+                    {{ $indikator['bukti_dukung'] }} <!-- Menampilkan bukti dukung jika ada -->
+                @else
+                    Tidak Tersedia
+                @endif
+            </td>
                 </tr>
                 @endforeach
             </tbody>

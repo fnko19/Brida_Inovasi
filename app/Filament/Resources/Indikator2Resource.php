@@ -31,6 +31,8 @@ class Indikator2Resource extends Resource
 
     protected static ?string $navigationLabel = 'Indikator 2';
 
+    protected static ?string $navigationGroup = 'Data Indikator';
+
     public static ?string $label = 'Indikator 2';
 
     public static function form(Form $form): Form
@@ -42,6 +44,7 @@ class Indikator2Resource extends Resource
                         ->label('Nama Inovasi Terkait')
                         ->required(),
                     Select::make('parameter2')
+                        ->label('Parameter')
                         ->options([
                             '1-10 SDM' => '1-10 SDM',
                             '11-30 SDM' => '11-30 SDM',
@@ -59,6 +62,7 @@ class Indikator2Resource extends Resource
                         ->reactive()
                         ->required(),
                     TextInput::make('bobot2')
+                        ->label('Bobot')
                         ->disabled()
                         ->default(fn ($get) => $get('bobot2')) 
                         ->required(),
@@ -103,6 +107,11 @@ class Indikator2Resource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Action::make('viewDocuments')
+                    ->label('')
+                    ->url(fn (Indikator2 $record) => route('filament.admin.resources.indikator2-files.index', ['dokumen' => $record->id]))
+                    ->icon('heroicon-o-document-text')
+                    ->tooltip('Lihat Dokumen'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

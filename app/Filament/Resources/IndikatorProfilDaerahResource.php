@@ -18,6 +18,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class IndikatorProfilDaerahResource extends Resource
 {
@@ -72,6 +73,7 @@ class IndikatorProfilDaerahResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    
                 ]),
             ]);
     }
