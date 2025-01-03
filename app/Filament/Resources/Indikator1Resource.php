@@ -31,6 +31,7 @@ class Indikator1Resource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationLabel = 'Indikator 1';
+    protected static ?string $navigationGroup = 'Data Indikator';
 
     public static ?string $label = 'Indikator 1';
 
@@ -43,6 +44,7 @@ class Indikator1Resource extends Resource
                         ->label('Nama Inovasi Terkait')
                         ->required(),
                     Select::make('parameter')
+                        ->label('Parameter')
                         ->options([
                             'SK Kepala Perangkat Daerah' => 'SK Kepala Perangkat Daerah',
                             'SK Kepala Daerah' => 'SK Kepala Daerah',
@@ -60,6 +62,7 @@ class Indikator1Resource extends Resource
                         ->reactive()
                         ->required(),
                     TextInput::make('bobot')
+                        ->label('Bobot')
                         ->disabled()
                         ->default(fn ($get) => $get('bobot')) 
                         ->required(),

@@ -96,6 +96,26 @@ class UserResource extends Resource
                         ->nullable()
                         ->required(fn (callable $get) => $get('role_diklat') === 'peserta diklat')
                         ->hidden(fn (callable $get) => $get('role_diklat') !== 'peserta diklat'),
+                    Select::make('kecamatan')
+                        ->label('Kecamatan')
+                        ->options([
+                            'Wajo' => 'Wajo',
+                            'Biringkanaya' => 'Biringkanaya',
+                            'Tallo' => 'Tallo',
+                            'Makassar' => 'Makassar',
+                            'Manggala' => 'Manggala',
+                            'Panakkukang' => 'Panakkukang',
+                            'Rappocini' => 'Rappocini',
+                            'Ujung Tanah' => 'Ujung Tanah',
+                            'Kepulauan Sangkarrang' => 'Kepulauan Sangkarrang',
+                            'Mariso' => 'Mariso',
+                            'Tamalanrea' => 'Tamalanrea',
+                            'Bontoala' => 'Bontoala',
+                            'Ujung Pandang' => 'Ujung Pandang',
+                            'Mamajang' => 'Mamajang',
+                            'Tamalate' => 'Tamalate'
+                        ])
+                        ->nullable(),
                 ])
             ]);
     }
@@ -117,6 +137,7 @@ class UserResource extends Resource
                     ->sortable()
                     ->toggleable(),
                 TextColumn::make('roles.name')->label('Role'),
+                TextColumn::make('kecamatan')->label('Kecamatan'),
             ])
             ->filters([
                 // SelectFilter::make('role')
