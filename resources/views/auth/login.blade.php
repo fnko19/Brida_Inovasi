@@ -17,30 +17,29 @@
     </style>
 </head>
 <body class="min-h-screen flex justify-center items-center">
-    <div class="bg-white w-full max-w-md space-x-8 py-8 px-16 rounded-lg shadow-md">
-        <div class="p-4">
-            <h2 class="text-2xl text-center font-bold text-gray-800 mt-6 mb-4">Sign In</h2>
-            <p class="text-gray-600 text-lg text-center mb-4">Silakan login terlebih dahulu</p>
+    <div class="bg-white w-full max-w-sm sm:max-w-md py-8 px-6 sm:px-16 rounded-lg shadow-lg">
+        <div class="p-2">
+            <h2 class="text-xl sm:text-2xl text-center font-bold text-gray-800 mt-4 sm:mt-6 mb-3">Sign In</h2>
+            <p class="text-gray-600 sm:text-lg text-center mb-4">Silakan login terlebih dahulu</p>
 
-            <!-- Form Login -->
             <form method="POST" action="{{ route('login') }}" id="login-form">
                 @csrf
                 <div class="mb-4">
-                    <label for="email" class="block text-lg font-medium pb-2 text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Masukkan email" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required />
+                    <label for="email" class="block sm:text-lg font-medium pb-1 sm:pb-2 text-gray-700">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base" required />
                 </div>
 
                 <div class="mb-6">
-                    <label for="password" class="block text-lg font-medium pb-2 text-gray-700">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Masukkan password" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required />
+                    <label for="password" class="block sm:text-lg font-medium pb-1 sm:pb-2 text-gray-700">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm sm:text-base" required />
                 </div>
 
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-400">Sign In</button>
+                <button type="submit" class="w-full bg-red-700 text-white py-2 rounded-lg font-bold text-sm sm:text-base hover:bg-red-400">Sign In</button>
             </form>
 
-            <p class="mt-6 text-md text-center">
-                <a class="text-blue-500 text-md">Belum punya akun? </a>
-                <a href="https://wa.me/6282191190039" class="text-blue-500 text-md hover:underline">Hubungi Admin</a>
+            <p class="mt-4 sm:mt-6 sm:text-md text-center">
+                <a class="text-gray-700">Belum punya akun? </a>
+                <a href="https://wa.me/6282343447786" class="text-red-500 hover:underline">Hubungi Admin</a>
             </p>
         </div>
     </div>

@@ -3,6 +3,16 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InovasiController;
+use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\IndikatorController;
+use App\Http\Controllers\ProfilPemdaController;
+use App\Http\Controllers\DokumenIndikatorController;
+use App\Models\inovasi_daerah;
+use App\Http\Controllers\InovasiApiController;
+use App\Models\ProfilPemda;
+use App\Http\Controllers\LinimasaInovasiController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +23,8 @@ use App\Http\Controllers\InovasiController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/inovasi-overview', [InovasiApiController::class, 'getInovasiOverview']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     $user = $request->user();
     if (!$user) {
@@ -23,6 +35,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'username' => $user->name,
     ]);
 });
+
+Route::get('/pengumuman', [PengumumanController::class, 'index']);  
+Route::post('/pengumuman', [PengumumanController::class, 'store']);  
 
 // Akun Routes
 Route::get('/akun', function () {
@@ -121,9 +136,15 @@ Route::delete('/laporan-diklat/{id}', function ($id) {
 });
 
 // InovasiDaerah Routes
+
 Route::get('/inovasi-daerah', function () {
     return inovasi_daerah::all();
 });
+
+Route::get('/inovasi-daerah/{id}/skor-kematangan', [InovasiController::class, 'getSkorKematangan']);
+
+Route::get('/inovasi-daerah', [InovasiController::class, 'getInovasiDaerah']);
+
 
 Route::post('/inovasi-daerah', function (Request $request) {
     return inovasi_daerah::create($request->all());
@@ -146,5 +167,18 @@ Route::delete('/inovasi-daerah/{id}', function ($id) {
 
 Route::get('/download-pdf/{id}', [InovasiController::class, 'downloadPdf'])->name('inovasi.download.pdf');
 Route::get('/export-excel/{id}', [InovasiController::class, 'exportExcel'])->name('export.excel');
+
+Route::get('/profil-pemda', function () {
+    return ProfilPemda::all();  
+});
+
+Route::get('/indikator', [IndikatorController::class, 'index']);
+
+Route::get('/dokumen-indikator/{indikator_id}', [DokumenIndikatorController::class, 'getDokumenByIndikator']);
+
+Route::get('/profil-pemda/download-pakta/{id}', [ProfilPemdaController::class, 'downloadPaktaIntegritas']);
+
+Route::get('/export-Raporexcel/{id}', [InovasiController::class, 'exportRaporExcel'])->name('exportRapor.excel');
+
 
 

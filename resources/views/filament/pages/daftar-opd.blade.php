@@ -3,62 +3,75 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 py-2">
-        <h1 class="text-xl font-bold pb-16">
-            Daftar OPD
-        </h1>
-        
-        <div class="card bg-blue-50 p-4">
-            <div class="card-body">
-                <h4 class="font-bold pb-4">Kota Makassar</h4>
-                
+<div class="container py-2">
+    <h1 class="text-xl font-bold pb-10">
+        Daftar OPD
+    </h1>
 
-                <table class="table table-bordered table-striped w-full">
-                    <thead class="table-light">
-                        <tr class="text-semibold">
-                            <th class="align-top">#</th>
-                            <th class="align-top">Nama OPD</th>
-                            <th class="align-top text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ([
-                            ['1', 'Perusda Rumah Potong Hewan'],
-                            ['2', 'Perusda Terminal Makassar'],
-                            ['3', 'BAGIAN PERENCANAAN dan KEUANGAN'],
-                            ['4', 'Satuan Polisi Pamong Praja'],
-                        ] as $opd)
-                            <tr class="bg-white">
-                                <td>{{ $opd[0] }}</td>
-                                <td>{{ $opd[1] }}</td>
-                                <td class="align-top font-normal">
-                                    <div class="flex justify-center space-x-2">
-                                        <a href="#" class="btn btn-sm">
-                                            <img src="{{ asset('images/6.png') }}" alt="Pen" width="20" height="50">
-                                        </a>
-                                        <a href="#" class="btn btn-sm">
-                                            <img src="{{ asset('images/5.png') }}" alt="Delete" width="20" height="20">
-                                        </a>
-                                    </div>
-                                </td>
+    <div class="card">
+        <div class="card-header bg-red-700 text-white">
+            <h4 class="font-semibold text-lg">Kota Makassar</h4>
+        </div>
+        <div class="card-body bg-red-100">
+            @if($daftarOpd->isEmpty())
+                <p class="text-center text-muted">Tidak ada data tersedia.</p>
+            @else
+                <div class="table-responsive">
+                    <table class="table bg-white table-bordered table-striped">
+                        <thead class="thead-light text-md bg-red-300">
+                            <tr>
+                                <th>#</th>
+                                <th>Nama OPD</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($daftarOpd as $key => $opd)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td class="text-nowrap">{{ $opd->nama_opd }}</td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                            <!-- Tombol Edit -->
+                                            <a href="{{ route('daftaropd.edit', $opd->id) }}" class="btn btn-sm">
+                                                <img src="{{ asset('images/6.png') }}" alt="Edit" width="20" height="20">
+                                            </a>
+                                            <!-- Delete Button -->
+                                            <form id="delete-form-{{ $opd->id }}" action="{{ route('daftaropd.destroy', $opd->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal-{{ $opd->id }}">
+                                                    <img src="{{ asset('images/5.png') }}" alt="Delete" width="20" height="20">
+                                                </button>
+                                            </form>
 
-                <div class="d-flex justify-content-center">
-                    <nav class="mt-4">
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">»</a></li>
-                        </ul>
-                    </nav>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="confirmDeleteModal-{{ $opd->id }}" tabindex="-1" aria-labelledby="confirmDeleteModalLabel-{{ $opd->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title font-bold" id="confirmDeleteModalLabel-{{ $opd->id }}"> Konfirmasi Penghapusan</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-start">
+                                                            Apakah Anda yakin ingin menghapus data ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                            <button type="submit" class="btn btn-danger" form="delete-form-{{ $opd->id }}">Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
+</div>
 @endsection

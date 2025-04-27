@@ -26,53 +26,53 @@ theme: {
 
 /** header/logo */
 .fi-sidebar-header {
-    @apply bg-primary-600 ring-primary-500;
+    @apply bg-white ring-primary-500 h-24;
 }
 
 /** sidebar */
 .fi-sidebar {
-    background-color: #90e0ef;
+    @apply bg-red-300 ;
     /* @apply bg-gradient-to-b dark:from-gray-950 dark:to-gray-800 from-primary-600 via-primary-500 to-sky-600 dark:bg-transparent; */
 }
 
 .fi-sidebar-group div span {
-    @apply text-black;
+    @apply text-black font-bold;
 }
 
 .fi-sidebar-group .fi-icon-btn {
-    @apply text-black;
+    @apply text-black ;
 }
 
 .fi-sidebar-group .fi-icon-btn:hover {
-    @apply text-black;
+    @apply text-black ;
 }
 
 .fi-sidebar-item-icon {
-    @apply text-black;
+    @apply text-black  ;
 }
 
 .fi-sidebar-item a {
-    @apply text-black;
+    @apply text-black ;
 }
 
 .fi-sidebar-item-label {
-    @apply text-black;
+    @apply text-black text-sm font-thin;
 }
 
 .fi-sidebar-item a:hover {
-    @apply text-primary-50 bg-primary-700;
+    @apply text-primary-50 bg-primary-600;
 }
 
 .fi-sidebar-item-active a {
-    @apply bg-primary-700 bg-opacity-60;
+    @apply bg-primary-500 ;
 }
 
 .fi-sidebar-item-active .fi-sidebar-item-label {
-    @apply font-extrabold;
+    @apply text-white;
 }
 
 .fi-sidebar-item-active .fi-sidebar-item-icon {
-    @apply text-primary-400;
+    @apply text-white;
 }
 
 /** main content */
@@ -89,3 +89,5 @@ theme: {
 .fi-btn {
     @apply ring-transparent shadow-gray-400 dark:shadow-gray-950;
 }
+
+

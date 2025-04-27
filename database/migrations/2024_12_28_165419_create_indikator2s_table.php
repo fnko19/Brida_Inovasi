@@ -22,7 +22,7 @@ return new class extends Migration
             //$table->integer('bobot2')->default(null)->change();
             $table->timestamps();
 
-        $table->foreign('inovasi2_id')->references('id')->on('inovasi_daerahs');
+        $table->foreign('inovasi2_id')->references('id')->on('inovasi_daerahs')->onDelete('cascade');
         });
     }
 

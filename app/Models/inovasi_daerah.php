@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 class inovasi_daerah extends Model
 {
@@ -47,11 +49,26 @@ class inovasi_daerah extends Model
         'tujuan_menengah',
         'tujuan_panjang',
         'laporan_diklat_id',
+        'opd_id',
+        'uptd_id',
+        'masa_berlaku'
     ];
 
     protected $casts = [
         'urusan_irisan' => 'array',
     ];
+
+    public $timestamps = true;
+
+    public function opd()
+    {
+        return $this->belongsTo(daftarOpd::class, 'opd_id');
+    }
+
+    public function uptd()
+    {
+        return $this->belongsTo(daftarUptd::class, 'uptd_id');
+    }
 
     public function indikatorSatu()
     {
@@ -180,6 +197,18 @@ class inovasi_daerah extends Model
         $bobotDuapuluh = $this->indikatorDuapuluh()->where('inovasi20_id', $this->id)->sum('bobot20');
         return $bobotSatu + $bobotDua +$bobotTiga +$bobotEmpat +$bobotLima +$bobotEnam +$bobotTujuh +$bobotDelapan +$bobotSembilan +$bobotSepuluh +$bobotSebelas +$bobotDuabelas +$bobotTigabelas +$bobotEmpatbelas +$bobotLimabelas +$bobotEnambelas +$bobotTujuhbelas +$bobotDelapanbelas +$bobotSembilanbelas +$bobotDuapuluh;
     }
+
+    protected static function booted()
+    {
+        static::updating(function ($inovasiDaerah) {
+
+            if ($inovasiDaerah->updated_at) {
+                $inovasiDaerah->masa_berlaku = Carbon::parse($inovasiDaerah->updated_at)->addYears(2);
+            }
+        });
+    }
+
+    
     // protected static function boot()
     // {
     //     parent::boot();
@@ -284,5 +313,7 @@ class inovasi_daerah extends Model
 //     $bobotDua = $this->indikatorDua()->where('inovasi2_id', $this->id)->sum('bobot2');
 //     return $bobotSatu + $bobotDua;
 // }
+
+    
 
 }

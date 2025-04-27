@@ -11,39 +11,38 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="bg-white px-16 text-black shadow-md">
-        <div class="h-16 px-6 flex items-center justify-between">
+    <nav class="fixed top-0 left-0 w-full bg-white px-12 text-black shadow-md z-50">
+        <div class="h-20 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <img src="{{ asset('images/logo-brida.png') }}" alt="Logo" class="w-12 h-12">
-                <span class="text-sm ps-6 font-bold">
-                    DASHBOARD BADAN RISET DAN <br> INOVASI DAERAH MAKASSAR
+                <img src="{{ asset('images/logobrida2.jpeg') }}" alt="Logo" class="w-16 h-16 hidden sm:block">
+                <span class="text-sm ps-2.5 font-bold">
+                    BADAN RISET DAN <br> INOVASI DAERAH MAKASSAR
                 </span>
             </div>
 
             <!-- Hamburger Menu Icon (Responsive) -->
             <div class="lg:hidden">
-                <button id="menu-toggle" class="text-2xl focus:outline-none">
+                <button id="menu-toggle" class="text-3xl focus:outline-none pr-2">
                     &#9776; <!-- Hamburger Icon -->
                 </button>
             </div>
 
             <!-- Navigation Menu -->
-            <ul id="menu" class="hidden lg:flex space-x-8 items-center text-sm">
+            <ul id="menu" class="hidden lg:flex space-x-6 items-center text-sm">
                 <!-- Dashboard -->
                 <li class="relative group">
-                    <a href="#" class="hover:text-blue-600 font-semibold">Dashboard</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm right-0 w-[160px] mt-2 space-y-2 py-2 px-8 rounded">
+                    <a href="#" class="hover:text-red-600 font-semibold">Dashboard</a>
+                    <ul class="absolute hidden group-hover:block bg-red-50 shadow-sm right-0 w-[160px] mt-2 space-y-2 py-2 px-8 rounded">
                         <li><a href="{{ route('landing') }}" class="block hover:font-semibold p-2 rounded">Dashboard</a></li>
-                        <li><a href="{{ route('arsip') }}" class="block hover:font-semibold p-2 rounded">Arsip</a></li>
                         <li><a href="{{ route('faq') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
                     </ul>
                 </li>
 
                 <!-- Database Inovasi Daerah -->
                 <li class="relative group">
-                    <a href="#" class="hover:text-blue-600 font-semibold">Database Inovasi Daerah</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm right-0 w-[200px] mt-2 space-y-2 py-2 px-4 rounded">
+                    <a href="#" class="hover:text-red-600 font-semibold">Database Inovasi Daerah</a>
+                    <ul class="absolute hidden group-hover:block bg-red-50 shadow-sm right-0 w-[200px] mt-2 space-y-2 py-2 px-4 rounded">
                         <li><a href="{{ route('profil-pemda') }}" class="block hover:font-semibold p-2 rounded">Profil Pemda</a></li>
                         <li><a href="{{ route('inovasi-daerah') }}" class="block hover:font-semibold p-2 rounded">Inovasi Daerah</a></li>
                     </ul>
@@ -51,16 +50,16 @@
 
                 <!-- Lomba Inovasi Daerah -->
                 <li class="relative group">
-                    <a href="#" class="hover:text-blue-600 font-semibold">Lomba Inovasi Daerah</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm right-0 w-[200px] mt-2 space-y-2 py-2 px-4 rounded">
+                    <a href="#" class="hover:text-red-600 font-semibold">Lomba Inovasi Daerah</a>
+                    <ul class="absolute hidden group-hover:block bg-red-50 shadow-sm right-0 w-[200px] mt-2 space-y-2 py-2 px-4 rounded">
                         <li><a href="{{ route('inovasi-pemerintah-daerah') }}" class="block hover:font-semibold p-2 rounded">Inovasi Pemerintah Daerah</a></li>
                     </ul>
                 </li>
 
                 <!-- Laporan Diklat -->
                 <li class="relative group">
-                    <a href="#" class="hover:text-blue-600 font-semibold">Laporan Diklat</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm right-0 w-[210px] space-y-2 py-2 px-4 rounded">
+                    <a href="#" class="hover:text-red-600 font-semibold">Laporan Diklat</a>
+                    <ul class="absolute hidden group-hover:block bg-red-50 shadow-sm right-0 w-[210px] space-y-2 py-2 px-4 rounded">
                         <li><a href="{{ route('data-laporan-diklat') }}" class="block hover:font-semibold p-2 rounded">Data Laporan Diklat</a></li>
                         <li><a href="{{ route('konfigurasi-akun') }}" class="block hover:font-semibold p-2 rounded">Konfigurasi Akun</a></li>
                     </ul>
@@ -69,7 +68,7 @@
                 <!-- Konfigurasi -->
                 <li class="relative group">
                     <a href="#" class="hover:text-gray-700 font-semibold">Konfigurasi</a>
-                    <ul class="absolute hidden group-hover:block bg-blue-50 shadow-sm mt-2 right-0 w-[200px]  space-y-1 py-2 px-4 rounded">
+                    <ul class="absolute hidden group-hover:block bg-red-50 shadow-sm mt-2 right-0 w-[200px]  space-y-1 py-2 px-4 rounded">
                         <li><a href="{{ route('account') }}" class="block hover:font-semibold p-2 rounded">Account</a></li>
                         <li><a href="{{ route('daftar-opd') }}" class="block hover:font-semibold p-2 rounded">Daftar OPD</a></li>
                         <li><a href="{{ route('daftar-uptd') }}" class="block hover:font-semibold p-2 rounded">Daftar UPTD</a></li>
@@ -80,13 +79,12 @@
                 <!-- user -->
                 <li class="flex items-center relative group">
                     <a href="#">
-                        <img src="{{ asset('images/user.png') }}" alt="user" class="w-11 h-11">
+                        <img src="{{ asset('images/user.png') }}" alt="user" class="w-8 h-8">
                     </a>
-                    <!-- Dropdown user yang di-hidden secara default -->
-                    <ul class="absolute bg-blue-50 flex flex-column space-y-2 shadow-sm py-4 justify-between px-4 rounded right-0 top-full w-[160px] box-border hidden">
-                        <li class="flex items-center">
+                    <ul class="absolute bg-red-50 flex flex-column space-y-2 shadow-sm py-4 items-center rounded right-0 top-full w-[140px] box-border hidden">
+                        <li class="flex">
                             @if (Auth::check())
-                                <span class="pb-2 font-semibold">halo {{ Auth::user()->name }}</span>
+                                <span class="pb-2 font-semibold">{{ Auth::user()->name }}</span>
                             @else
                                 <span class="pb-2 font-semibold">Guest</span>
                             @endif
@@ -97,7 +95,7 @@
                             </form>
                             <button 
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                                class="bg-blue-500 font-semibold text-white text-md px-4 py-1 rounded-md hover:bg-blue-700">
+                                class="bg-red-500 font-semibold text-white text-md px-4 py-1 rounded-md hover:bg-red-700">
                                 Logout
                             </button>
                         </li>
@@ -108,9 +106,8 @@
         </div>
 
         <!-- Mobile Menu -->
-        <ul id="mobile-menu" class="lg:hidden hidden flex-col space-y-4 px-6 py-4 bg-blue-50 text-black">
+        <ul id="mobile-menu" class="lg:hidden hidden flex-col space-y-4 px-6 py-4 bg-red-50 text-black">
             <li><a href="{{ route('landing') }}" class="block hover:font-semibold p-2">Dashboard</a></li>
-            <li><a href="{{ route('arsip') }}" class="block hover:font-semibold p-2 rounded">Arsip</a></li>
             <li><a href="{{ route('faq') }}" class="block hover:font-semibold p-2 rounded">FAQ</a></li>
             <li><a href="{{ route('profil-pemda') }}" class="block hover:font-semibold p-2 rounded">Profil Pemda</a></li>
             <li><a href="{{ route('inovasi-daerah') }}" class="block hover:font-semibold p-2 rounded">Inovasi Daerah</a></li>
@@ -127,7 +124,7 @@
                 </form>
                 <button 
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                    class="bg-blue-500 font-semibold text-white text-md px-4 py-1 rounded-md hover:bg-blue-700">
+                    class="bg-red-500 font-semibold text-white text-md px-4 py-1 rounded-md hover:bg-red-700">
                     Logout
                 </button>
             </li>

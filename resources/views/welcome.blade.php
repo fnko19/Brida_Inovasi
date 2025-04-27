@@ -17,22 +17,21 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 <body class="flex justify-center items-center min-h-screen">
     <div class="text-center max-w-3xl px-4  p-6 rounded-lg">
-        <!-- Logo Section -->
+        
         <div class="flex justify-center gap-6 mb-6">
-            <img src="{{ asset('images/removeLogo.png') }}" alt="Logo BRIDA" class="h-20">
+            <img src="{{ asset('images/removeLogo.png') }}" alt="Logo BRIDA" class="h-24">
             <img src="{{ asset('images/logo-makassar.png') }}" alt="Logo Makassar" class="h-20">
         </div>
         
-        <!-- Title and Subtitle -->
         <h1 class="text-2xl font-bold mb-4">
-            Dashboard<br>Badan Riset dan Inovasi Daerah Kota Makassar
+            Dashboard Inovasi<br>Badan Riset dan Inovasi Daerah Kota Makassar
         </h1>
         <p class="text-lg text-gray-600 mb-8">
             Pusat riset dan inovasi untuk kemajuan kota Makassar
         </p>
         
         <!-- Button -->
-        <a href="{{ route('login') }}" class="inline-block px-6 py-3 text-white bg-blue-500 hover:bg-blue-600 rounded-lg text-lg font-medium">
+        <a href="{{ route('login') }}" class="inline-block px-4 py-2 text-white bg-red-700 hover:bg-red-500 rounded-lg text-md font-medium">
             Masuk Sekarang
         </a>
     </div>

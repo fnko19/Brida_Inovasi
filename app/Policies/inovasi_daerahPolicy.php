@@ -4,11 +4,10 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\inovasi_daerah;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class inovasi_daerahPolicy
 {
-    use HandlesAuthorization;
 
     /**
      * Determine whether the user can view any models.
@@ -23,7 +22,7 @@ class inovasi_daerahPolicy
      */
     public function view(User $user, inovasi_daerah $inovasiDaerah): bool
     {
-        return $user->can('view_inovasi::daerah');
+        return $user->can('view_inovas::daerah');
     }
 
     /**

@@ -27,9 +27,11 @@ class Indikator17FileResource extends Resource
 {
     protected static ?string $model = Indikator17File::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'File Pendukung Indikator 17';
 
-    protected static ?string $navigationGroup = 'Data Indikator';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
+
+    protected static ?string $navigationGroup = 'File Pendukung Indikator';
 
     public static function form(Form $form): Form
     {

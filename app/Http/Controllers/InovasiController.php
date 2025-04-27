@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\inovasi_daerah;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Exports\InovasiExport;
+use App\Exports\excelInovasi;
+use App\Exports\excelPemerintah;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use App\Filament\Resources\InovasiDaerahResource;
+use App\Exports\StaticRaporInovasiExport;
+
 
 class InovasiController extends Controller
 {
@@ -398,6 +403,85 @@ class InovasiController extends Controller
 
     public function exportExcel($id)
     {
-        return Excel::download(new InovasiExport($id), 'laporan-inovasi.xlsx');
+        return Excel::download(new InovasiExport($id), 'laporan-inovasi-'.$id.'.xlsx');
     }
+
+    public function index(Request $request)
+    {
+        // Mengambil data yang diperlukan
+        $inovasiYangDilaporkan = inovasi_daerah::count();
+        $inovasiYangDikirim = inovasi_daerah::where('tahapan_inovasi', 'penerapan')->count();
+        $skorJumlahInovasi = inovasi_daerah::sum('prioritas');
+        $inisiatif = inovasi_daerah::where('tahapan_inovasi', 'inisiatif')->count();
+        $ujiCoba = inovasi_daerah::where('tahapan_inovasi', 'uji_coba')->count();
+        $penerapan = inovasi_daerah::where('tahapan_inovasi', 'penerapan')->count();
+    
+        
+    
+        return view('filament.pages.inovasi-daerah', compact(
+            'inovasiYangDilaporkan', 
+            'inovasiYangDikirim', 
+            'skorJumlahInovasi', 
+            'inisiatif', 
+            'ujiCoba', 
+            'penerapan'
+        ));
+    }
+
+    public function getInovasiDaerah(Request $request)
+    {
+        // Mulai query ke tabel inovasi_daerahs
+        $query = \DB::table('inovasi_daerahs'); // Gunakan \DB untuk mengakses facade DB
+
+        // Periksa apakah parameter 'tahapan' ada dan tidak kosong
+        if ($request->has('tahapan') && !empty($request->tahapan)) {
+            // Filter berdasarkan kolom tahapan_inovasi
+            $query->where('tahapan_inovasi', $request->tahapan);
+        }
+
+        // Debugging: lihat query yang dijalankan
+        \Log::info('SQL Query:', ['query' => $query->toSql(), 'bindings' => $query->getBindings()]);
+
+        // Kembalikan hasil query dalam format JSON
+        return response()->json($query->get());
+    }
+
+    public function getSkorKematangan($id)
+    {
+        $skorKematangan = InovasiDaerahResource::getSkorKematangan($id);
+
+        if ($skorKematangan === null) {
+            return response()->json(['error' => 'Data tidak ditemukan'], 404);
+        }
+
+        return response()->json(['skor_kematangan' => $skorKematangan]);
+    }
+
+    public function excelInovasi()
+    {
+        return Excel::download(new excelInovasi, 'daftar_inovasi_daerah.xlsx');
+    }
+
+    public function excelPemerintah()
+    {
+        return Excel::download(new excelInovasi, 'daftar_inovasi_pemerintah_daerah.xlsx');
+    }
+
+    public function exportRaporExcel($id)
+    {
+        // Pastikan StaticRaporInovasiExport menerima parameter $id
+        return Excel::download(new StaticRaporInovasiExport($id), 'rapor_inovasi_' . $id . '.xlsx');
+    }
+
+    public function destroy($id)
+    {
+        $inovasi = Inovasi::find($id);
+        if ($inovasi) {
+            $inovasi->delete();
+            return response()->json(['message' => 'Inovasi berhasil dihapus'], 200);
+        }
+        return response()->json(['message' => 'Inovasi tidak ditemukan'], 404);
+    }
+
 }
+

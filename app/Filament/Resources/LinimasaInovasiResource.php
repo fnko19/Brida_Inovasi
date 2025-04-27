@@ -9,7 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Tables; 
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,7 +18,7 @@ class LinimasaInovasiResource extends Resource
 {
     protected static ?string $model = inovasi_daerah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calendar';
 
     protected static ?string $navigationLabel = 'Linimasa Inovasi';
 
@@ -49,17 +49,23 @@ class LinimasaInovasiResource extends Resource
                     ->label('Terakhir Diubah')
                     ->formatStateUsing(fn($state) => \Carbon\Carbon::parse($state)->format('d-m-Y'))
                     ->sortable(),
+                TextColumn::make('masa_berlaku')
+                    ->label('Masa Berlaku Inovasi')
+                    ->formatStateUsing(fn($state, $record) => 
+                        $record->updated_at ? 
+                        \Carbon\Carbon::parse($record->updated_at)->addYears(2)->format('d-m-Y') : 'Tanggal Tidak Tersedia'
+                    )
+                    ->sortable(),                                
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
@@ -74,8 +80,6 @@ class LinimasaInovasiResource extends Resource
     {
         return [
             'index' => Pages\ListLinimasaInovasis::route('/'),
-            //'create' => Pages\CreateLinimasaInovasi::route('/create'),
-            //'edit' => Pages\EditLinimasaInovasi::route('/{record}/edit'),
         ];
     }
 }

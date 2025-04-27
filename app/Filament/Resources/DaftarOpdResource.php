@@ -21,7 +21,7 @@ class DaftarOpdResource extends Resource
 {
     protected static ?string $model = DaftarOpd::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     protected static ?string $navigationLabel = 'Daftar OPD';
 

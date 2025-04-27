@@ -26,10 +26,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class Indikator19FileResource extends Resource
 {
     protected static ?string $model = Indikator19File::class;
+    protected static ?string $navigationGroup = 'File Pendukung Indikator';
 
-    protected static ?string $navigationGroup = 'Data Indikator';
+    protected static ?string $navigationLabel = 'File Pendukung Indikator 19';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
     public static function form(Form $form): Form
     {

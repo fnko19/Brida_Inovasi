@@ -9,6 +9,8 @@ class DokumenIndikator extends Model
 {
     use HasFactory;
 
+    protected $table = 'dokumen_indikators';
+
     protected $fillable = [
         'indikator_id', 
         'nomor_surat',
@@ -19,6 +21,6 @@ class DokumenIndikator extends Model
 
     public function indikator()
     {
-        return $this->belongsTo(IndikatorProfilDaerah::class, 'indikator_id');
+        return $this->belongsTo(IndikatorProfilDaerah::class, 'indikator_id', 'id');
     }
 }

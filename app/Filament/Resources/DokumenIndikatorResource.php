@@ -36,7 +36,7 @@ class DokumenIndikatorResource extends Resource
 
     public static ?string $label = 'Dokumen Pendukung Indikator Profil Daerah';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-plus';
 
     public static function form(Form $form): Form
     {
@@ -56,7 +56,8 @@ class DokumenIndikatorResource extends Resource
                         ->label('Upload File')
                         ->directory('uploads')
                         ->acceptedFileTypes(['application/pdf'])
-                        ->required(),
+                        ->required()
+                        ->maxSize(20480),
                     Select::make('indikator_id')
                         ->label('Pilih Indikator')
                         ->options(IndikatorProfilDaerah::pluck('nama_indikator', 'id'))

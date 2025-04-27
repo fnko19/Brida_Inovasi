@@ -26,8 +26,7 @@ class Indikator8Resource extends Resource
 {
     protected static ?string $model = Indikator8::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationIcon = 'heroicon-o-document';
     protected static ?string $navigationGroup = 'Data Indikator';
 
     public static function form(Form $form): Form

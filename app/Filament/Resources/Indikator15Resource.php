@@ -26,7 +26,7 @@ class Indikator15Resource extends Resource
 {
     protected static ?string $model = Indikator15::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationGroup = 'Data Indikator';
 
@@ -59,6 +59,9 @@ class Indikator15Resource extends Resource
                             'Ada dukungan melalui informasi website/sosial media/web aplikasi/ aplikasi mobile(android/ios) yang berjalan secara terpisah' => 2,
                             'Ada dukungan melalui informasi website/sosial media/web aplikasi/ aplikasi mobile(android/ios) yang terintegrasi dalam satu portal pada unit organisasi yang bersangkutan' => 4,
                             'Ada dukungan melalui informasi website/sosial media/web aplikasi/ aplikasi mobile(android/ios) yang layanan sudah terintegrasi dengan unit organisasi lain' => 6,
+                            'Layanan inovasi berjalan secara tersendiri (independen)' => 2,
+                            'Layanan masih terintegrasi dengan layanan lain pada program atau kegiatan lain pada satu unit organisasi atau dalam satu urusan pemerintahan' => 4,
+                            'Layanan masih terintegrasi dengan layanan lain pada program atau kegiatan lain pada unit organisasi lain atau dalam lebih dari satu urusan pemerintahan' => 6,
                             default => 0,
                             };
                             $set('bobot15', $bobot15); 

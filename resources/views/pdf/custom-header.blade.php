@@ -8,6 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
+            text-align: justify;
         }
         .header {
             text-align: center;
@@ -15,7 +16,7 @@
         }
         .header img {
             margin: 0;
-            height: 100px;
+            height: 120px;
         }
         .content {
             margin-top: 20px;
@@ -46,7 +47,8 @@
         
         p > strong {
             display: block;
-            margin-bottom: 0.15cm;
+            margin-top: 0.25cm;
+            margin-bottom: 0.25cm;
         }
         
         p + p {
@@ -54,8 +56,33 @@
         }
 
         p > strong + p {
-            margin-top: 0.5cm;
+            margin-top: 0.35cm;
         }
+        .head{
+            padding-top: 0.5cm;
+        }
+        .padding-sub{
+            padding-left:0.5cm;
+        }
+        .padding-left {
+            padding-left: 1.35cm;  
+        }
+        .padding-left2 {
+            padding-left: 1.55cm;  
+        }
+        .padding-left3 {
+            padding-left: 1.05cm;  
+        }
+        .padding-left4 {
+            padding-left: 2.45cm;  
+        }
+        .padding-left5 {
+            padding-left: 1.95cm;  
+        }
+        .padding-left6 {
+            padding-left: 2.98cm;  
+        }
+        
     </style>
 </head>
 <body>
@@ -67,93 +94,92 @@
     </div>
 
     <div class="content">
-        <p><strong>Pemerintah Daerah:</strong> Kota Makassar</p>
-        <p><strong>Nomor Registrasi:</strong> {{ $nomor_registrasi}}</p>
+        <div>
+            <p><strong>Pemerintah Daerah: Kota Makassar</p>
+            <p><strong>Nomor Registrasi: {{ $nomor_registrasi}}</p>
+        </div>
+        <h4 class="head">1. PROFIL INOVASI</h4>
+        <p class="padding-sub"><strong>1.1. Nama Inovasi:</strong></p>
+        <p class="padding-left">{{ $nama_inovasi }}</p>
 
-        <h3>1. PROFIL INOVASI</h3>
-        <p><strong>1.1. Nama Inovasi:</strong></p>
-        <p>{{ $nama_inovasi }}</p>
+        <p class="padding-sub"><strong>1.2. Dibuat Oleh:</strong></p>
+        <p class="padding-left">{{ $dibuat_oleh }}</p>
 
-        <p><strong>1.2. Dibuat Oleh:</strong></p>
-        <p>{{ $dibuat_oleh }}</p>
+        <p class="padding-sub"><strong>1.3. Tahapan Inovasi:</strong></p>
+        <p class="padding-left">{{ $tahapan_inovasi }}</p>
 
-        <p><strong>1.3. Tahapan Inovasi:</strong></p>
-        <p>{{ $tahapan_inovasi }}</p>
+        <p class="padding-sub"><strong>1.4. Inisiator:</strong></p>
+        <p class="padding-left">{{ $inisiator }}</p>
 
-        <p><strong>1.4. Inisiator:</strong></p>
-        <p>{{ $inisiator }}</p>
+        <p class="padding-sub"><strong>1.5. Nama Inisiator:</strong></p>
+        <p class="padding-left">{{ $nama_inisiator }}</p>
 
-        <p><strong>1.5. Nama Inisiator:</strong></p>
-        <p>{{ $nama_inisiator }}</p>
+        <p class="padding-sub"><strong>1.6. Jenis Inovasi:</strong></p>
+        <p class="padding-left">{{ $jenis_inovasi }}</p>
 
-        <p><strong>1.6. Jenis Inovasi:</strong></p>
-        <p>{{ $jenis_inovasi }}</p>
+        <p class="padding-sub"><strong>1.7. Bentuk Inovasi:</strong></p>
+        <p class="padding-left">{{ $bentuk_inovasi }}</p>
 
-        <p><strong>1.7. Bentuk Inovasi:</strong></p>
-        <p>{{ $bentuk_inovasi }}</p>
+        <p class="padding-sub"><strong>1.8. Tematik:</strong></p>
+        <p class="padding-left">{{ $tematik }}</p>
 
-        <p><strong>1.8. Tematik:</strong></p>
-        <p>{{ $tematik }}</p>
+        <p class="padding-sub"><strong>1.9. Program Prioritas:</strong></p>
+        <p class="padding-left">{{ $prioritas }}</p>
 
-        <p><strong>1.9. Prioritas:</strong></p>
-        <p>{{ $prioritas }}</p>
+        <p class="padding-sub"><strong>1.10. Jenis Program Prioritas:</strong></p>
+        <p class="padding-left2">{{ $misi }}</p>
 
-        <p><strong>1.10. Misi Beririsan:</strong></p>
-        <p>{{ $misi }}</p>
+        <p class="padding-sub"><strong>1.11. Urusan Pemerintahan Terkait Inovasi:</strong></p>
+        <p class="padding-left2">{{ $urusan_utama }}</p>
 
-        <p><strong>1.11. Urusan Pemerintahan Terkait Inovasi:</strong></p>
-        <p>{{ $urusan_utama }}</p>
+        <p class="padding-sub"><strong>1.12. Waktu Uji:</strong></p>
+        <p class="padding-left2">{{ $waktu_uji }}</p>
 
-        <p><strong>1.12. Waktu Uji:</strong></p>
-        <p>{{ $waktu_uji }}</p>
+        <p class="padding-sub"><strong>1.13. Waktu Penerapan:</strong></p>
+        <p class="padding-left2">{{ $waktu_penerapan }}</p>
 
-        <p><strong>1.13. Waktu Penerapan:</strong></p>
-        <p>{{ $waktu_penerapan }}</p>
+        <p class="padding-sub"><strong>1.14. Apakah Sudah Berkembang?:</strong></p>
+        <p class="padding-left2">{{ $berkembang }}</p>
 
-        <p><strong>1.14. Apakah Sudah Berkembang?:</strong></p>
-        <p>{{ $berkembang }}</p>
-
-        <p><strong>1.15. Rancang Bangun:</strong></p>
+        <p class="padding-sub"><strong>1.15. Rancang Bangun:</strong></p>
         <ul>
-            <li><strong>1.15.1. Dasar Hukum:</strong><p>{{ $dasar_hukum }}</p></li>
-            <li><strong>1.15.2 Masalah:</strong><p>{{ $masalah }}</p></li>
-            <li><strong>1.15.3 Isu Strategis:</strong></li>
+            <li  class="padding-left3"><strong>1.15.1. Dasar Hukum:</strong><li class="padding-left4">{{ $dasar_hukum }}</li></li>
+            <li  class="padding-left3"><strong>1.15.2. Masalah:</strong><li class="padding-left4">{{ $masalah }}</li></li>
+            <li  class="padding-left3"><strong>1.15.3. Isu Strategis:</strong></li>
             <ul>
-                <li><strong>Isu Global:</strong><p>{{ $isu_global }}</p></li>
-                <li><strong>Isu Nasional:</strong><p>{{ $isu_nasional }}</p></li>
-                <li><strong>Isu Lokal:</strong><p>{{ $isu_lokal }}</p></li>
+                <li class="padding-left5"><strong>Isu Global:</strong><p>{{ $isu_global }}</p></li>
+                <li class="padding-left5"><strong>Isu Nasional:</strong><p>{{ $isu_nasional }}</p></li>
+                <li class="padding-left5"><strong>Isu Lokal:</strong><p>{{ $isu_lokal }}</p></li>
             </ul>
-            <li><strong>1.15.4 Metode Baru:</strong><p>{{ $metode_baru }}</p></li>
-            <li><strong>1.15.5 Keunggulan:</strong><p>{{ $keunggulan }}</p></li>
-            <li><strong>1.15.6 Spesifikasi Inovasi:</strong><p>{{ $spesifikasi_inovasi }}</p></li>
+            <li class="padding-left3"><strong>1.15.4. Metode Baru:</strong><li class="padding-left4">{{ $metode_baru }}</li></li>
+            <li class="padding-left3"><strong>1.15.5. Keunggulan:</strong><li class="padding-left4">{{ $keunggulan }}</li></li>
+            <li class="padding-left3"><strong>1.15.6. Spesifikasi Inovasi:</strong><li class="padding-left4">{{ $spesifikasi_inovasi }}</li></li>
         </ul>
-        <p><strong>1.16. Tujuan:</strong></p>
+        <p class="padding-sub"><strong>1.16. Tujuan:</strong></p>
         <ul>
-            <li><strong>1.16.1. Tujuan Jangka Pendek:</strong><p>{{ $tujuan_pendek }}</p></li>
-            <li><strong>1.16.2. Tujuan Jangka Menengah:</strong><p>{{ $tujuan_menengah }}</p></li>
-            <li><strong>1.16.3. Tujuan Jangka Panjang:</strong><p>{{ $tujuan_panjang }}</p></li>
+            <li class="padding-left3"><strong>1.16.1. Tujuan Jangka Pendek:</strong><li class="padding-left4">{{ $tujuan_pendek }}</p></li>
+            <li class="padding-left3"><strong>1.16.2. Tujuan Jangka Menengah:</strong><li class="padding-left4">{{ $tujuan_menengah }}</p></li>
+            <li class="padding-left3"><strong>1.16.3. Tujuan Jangka Panjang:</strong><li class="padding-left4">{{ $tujuan_panjang }}</p></li>
         </ul>
 
-        <p><strong>1.17. Manfaat:</strong></p>
-        <p>{{ $manfaat }}</p>
+        <p class="padding-sub"><strong>1.17. Manfaat:</strong></p>
+        <p class="padding-left2">{{ $manfaat }}</p>
 
-        <p><strong>1.18. Skor Kematangan:</strong></p>
-        <p>{{ $skor_kematangan }}</p>
+        <p class="padding-sub"><strong>1.18. Skor Kematangan:</strong></p>
+        <p class="padding-left2">{{ $skor_kematangan }}</p>
 
-        <p><strong>1.19. Hasil Inovasi:</strong></p>
-        <ul>
-            <li><strong>1.19.1. Hasil Inovasi Sebelum Implementasi:</strong><p> {{ $hasil_inovasi_sebelum }}</p></li>
-            <li><strong>1.19.2. Hasil Inovasi Sesudah Implementasi:</strong><p> {{ $hasil_inovasi_setelah }}</p></li>
-        </ul>
+        <p class="padding-sub"><strong>1.19. Hasil Inovasi:</strong></p>
+            <p class="padding-left2"><strong>1.19.1. Hasil Inovasi Sebelum Implementasi:</strong><p class="padding-left6"> {{ $hasil_inovasi_sebelum }}</p></p>
+            <p class="padding-left2"><strong>1.19.2. Hasil Inovasi Sesudah Implementasi:</strong><p class="padding-left6"> {{ $hasil_inovasi_setelah }}</p</p>
 
-        <h3>2. INDIKATOR INOVASI</h3>
+        <h4 class="head">2. INDIKATOR INOVASI</h4>
         <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
             <thead>
                 <tr>
-                    <th style="border: 1px solid black; padding: 5px;">No.</th>
-                    <th style="border: 1px solid black; padding: 5px;">Indikator SPD</th>
-                    <th style="border: 1px solid black; padding: 5px;">Informasi</th>
-                    <th style="border: 1px solid black; padding: 5px;">Bukti Dukung</th>
+                    <th style="border: 1px solid black; padding: 5px; background-color: lightgray;">No.</th>
+                    <th style="border: 1px solid black; padding: 5px; background-color: lightgray;">Indikator SPD</th>
+                    <th style="border: 1px solid black; padding: 5px; background-color: lightgray;">Informasi</th>
+                    <th style="border: 1px solid black; padding: 5px; background-color: lightgray;">Bukti Dukung</th>
                 </tr>
             </thead>
             <tbody>

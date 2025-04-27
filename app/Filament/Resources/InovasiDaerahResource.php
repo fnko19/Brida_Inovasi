@@ -9,10 +9,15 @@ use App\Models\Indikator1;
 use App\Models\laporanDiklat;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Tables\Actions\DropdownAction;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use App\Models\daftarOpd;
+use App\Models\daftarUptd;
+use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\Action;
+use Filament\Resources\Pages\ListRecords;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\MultiSelect;
@@ -30,7 +35,7 @@ class InovasiDaerahResource extends Resource
 {
     protected static ?string $model = inovasi_daerah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-light-bulb';
 
     protected static ?string $navigationLabel = 'Inovasi Daerah';
 
@@ -45,20 +50,28 @@ class InovasiDaerahResource extends Resource
         return $form
             ->schema([
                 Card::make([
-                    TextInput::make('dibuat_oleh')->label('Dibuat Oleh')->required(),
+                    TextInput::make('dibuat_oleh')->label('Dibuat Oleh')->required() ,
                     Select::make('pilih_diklat')
                         ->label('Apakah Inovasi ini Berasal dari Suatu Diklat?')
                         ->options([
                             'Ya' => 'Ya',
                             'Tidak' => 'Tidak',
                         ])
-                        //->required()
                         ->reactive(),
-                    Select::make('laporan_diklat_id')
+                        Select::make('jenis_pelatihan')
                         ->label('Pilih Diklat')
-                        ->options(fn () => laporanDiklat::pluck('judul_pelatihan', 'id')) 
+                        ->options([
+                            ''  => 'Pilih',
+                            '1' => 'Pelatihan Kepemimpinan Pengawas (PKP)',
+                            '2' => 'Pelatihan Kepemimpinan Administrator (PKA)',
+                            '3' => 'Pelatihan Kepemimpinan Nasional II (PKN II)',
+                            '4' => 'Pelatihan Kepemimpinan Nasional I (PKN I)',
+                            '5' => 'Pelatihan Dasar CPNS',
+                            '6' => 'Pelatihan Kepemimpinan Non-Structural',
+                        ])
                         ->nullable()
-                        ->hidden(fn (callable $get) => $get('pilih_diklat') !== 'Ya'),
+                        ->searchable()
+                        ->hidden(fn (callable $get) => $get('pilih_diklat') !== 'Ya'),                    
                     TextInput::make('nama_inovasi')->label('Nama Inovasi')->required(),
                     Radio::make('tahapan_inovasi')
                         ->label('Tahapan Inovasi')
@@ -80,6 +93,16 @@ class InovasiDaerahResource extends Resource
                         ])
                         ->required()
                         ->inline(),
+                    Select::make('opd_id')
+                        ->label('Pilih OPD')
+                        ->options(fn () => daftarOpd::pluck('nama_opd', 'id')) 
+                        ->nullable()
+                        ->searchable(), 
+                    Select::make('uptd_id')
+                        ->label('Pilih UPTD')
+                        ->options(fn () => daftarUptd::pluck('nama_uptd', 'id')) 
+                        ->nullable()
+                        ->searchable(),    
                     TextInput::make('nama_inisiator')->label('Nama Inisiator')->required(),
                     Radio::make('jenis_inovasi')
                         ->label('Jenis Inovasi')
@@ -114,9 +137,10 @@ class InovasiDaerahResource extends Resource
                             '2' => 'Bukan Prioritas',
                         ])
                         ->required()
-                        ->inline(),
+                        ->inline()
+                       ->reactive(),
                     Select::make('misi')
-                        ->label('Misi Beririsan')
+                        ->label('Jenis Program Prioritas')
                         ->options([
                             '1' => 'Mewujudkan tata kelola pemerintahan yang cerdas, bersih terpercaya',
                             '2' => 'Meningkatkan kualitas layanan dasar bidang pendidikan dan kesehatan secara merata',
@@ -127,7 +151,8 @@ class InovasiDaerahResource extends Resource
                             '7' => 'Menegakkan ketertiban umum dan pemberian layanan hukum bagi kelompok rentan',
                             '8' => 'Mewujudkan kota yang tangguh terhadap bencana dan perubahan iklim serta meningkatkan kesejahteraan masyarakat pesisir dan pulau',
                         ])
-                        ->required(),
+                        ->required(fn (callable $get) => $get('prioritas') === '1')
+                        ->hidden(fn (callable $get) => $get('prioritas') !== '1'),
                     Placeholder::make('note')
                         ->label('Urusan Pemerintahan'),
                     Select::make('urusan_utama')
@@ -428,10 +453,12 @@ class InovasiDaerahResource extends Resource
                     ->label('')
                     ->color('info')
                     ->tooltip('Edit'),
+                
                 Tables\Actions\DeleteAction::make()
                     ->label('')
                     ->color('danger')
-                    ->tooltip('Hapus'), 
+                    ->tooltip('Hapus'),
+                
                 Action::make('download_pdf')
                     ->label('')
                     ->url(fn (inovasi_daerah $record) => route('inovasi.download.pdf', $record->id))
@@ -439,6 +466,7 @@ class InovasiDaerahResource extends Resource
                     ->icon('heroicon-o-document-arrow-down')
                     ->color('pdf')
                     ->tooltip('Download PDF'),
+                
                 Action::make('export_excel')
                     ->label('')
                     ->url(fn (inovasi_daerah $record) => route('export.excel', $record->id))
@@ -446,133 +474,35 @@ class InovasiDaerahResource extends Resource
                     ->icon('heroicon-o-document-chart-bar')
                     ->color('ijo')
                     ->tooltip('Download Excel'),
-                Action::make('viewDocuments')
+
+                Action::make('exportRapor_excel')
                     ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator1s.index', ['inovasi' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Pertama'),
-                Action::make('viewDocuments2')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator2s.index', ['inovasi2' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kedua'),
-                Action::make('viewDocuments3')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator3s.index', ['inovasi3' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Ketiga'),
-                Action::make('viewDocuments4')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator4s.index', ['inovasi4' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keempat'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator5s.index', ['inovasi5' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kelima'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator6s.index', ['inovasi6' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keenam'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator7s.index', ['inovasi7' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Ketujuh'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator8s.index', ['inovasi8' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kedelapan'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator9s.index', ['inovasi9' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kesembilan'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator10s.index', ['inovasi10' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kesepuluh'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator11s.index', ['inovasi11' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kesebelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator12s.index', ['inovasi12' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keduabelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator13s.index', ['inovasi13' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Ketigabelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator14s.index', ['inovasi14' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keempatbelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator15s.index', ['inovasi15' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kelimabelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator16s.index', ['inovasi16' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keenambelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator17s.index', ['inovasi17' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Ketujuhbelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator18s.index', ['inovasi18' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kedelapanbelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator19s.index', ['inovasi19' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Kesembilanbelas'),
-                Action::make('viewDocuments5')
-                    ->label('')
-                    ->url(fn (inovasi_daerah $record) => route('filament.admin.resources.indikator20s.index', ['inovasi20' => $record->id]))
-                    ->icon('heroicon-o-document-text')
-                    ->color('indikator')
-                    ->tooltip('Indikator Keduapuluh'),
-            ])
+                    ->url(fn (inovasi_daerah $record) => route('exportRapor.excel', $record->id))
+                    ->openUrlInNewTab()
+                    ->icon('heroicon-o-document-chart-bar')
+                    ->color('rapor')
+                    ->tooltip('Rapor Inovasi'),        
+                
+                ActionGroup::make(
+                    collect(range(1, 20))->map(fn ($i) => Action::make("viewDocuments$i")
+                        ->label("Indikator Ke-$i")
+                        ->url(fn (inovasi_daerah $record) => route("filament.admin.resources.indikator{$i}s.index", ["inovasi{$i}" => $record->id]))
+                        ->icon('heroicon-o-document-text')
+                        ->color('indikator')
+                        ->extraAttributes([
+                            'class' => 'text-sm h-[28px]',]),
+                            
+                        )->toArray()
+                    )
+                    ->tooltip('Indikator'),
+
+])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-    }
+        }                  
 
     public static function getRelations(): array
     {
@@ -588,5 +518,12 @@ class InovasiDaerahResource extends Resource
             'create' => Pages\CreateInovasiDaerah::route('/create'),
             'edit' => Pages\EditInovasiDaerah::route('/{record}/edit'),
         ];
+    }
+
+    public static function getSkorKematangan($id)
+    {
+        $inovasi = inovasi_daerah::find($id);
+        // Misalnya kita ingin mengambil skor_kematangan dari logic yang ada
+        return $inovasi ? $inovasi->skor_kematangan : null;
     }
 }

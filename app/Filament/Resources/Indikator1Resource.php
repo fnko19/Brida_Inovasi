@@ -28,7 +28,7 @@ class Indikator1Resource extends Resource
 {
     protected static ?string $model = Indikator1::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationLabel = 'Indikator 1';
     protected static ?string $navigationGroup = 'Data Indikator';
@@ -52,9 +52,9 @@ class Indikator1Resource extends Resource
                         ])
                         ->afterStateUpdated(function ($state, callable $set) {
                             $bobot = match ($state) {
-                                'SK Kepala Perangkat Daerah' => 1,
-                                'SK Kepala Daerah' => 2,
-                                'Peraturan Kepala Daerah/Peraturan Daerah' => 3,
+                                'SK Kepala Perangkat Daerah' => 3,
+                                'SK Kepala Daerah' => 6,
+                                'Peraturan Kepala Daerah/Peraturan Daerah' => 9,
                                 default => 0,
                             };
                             $set('bobot', $bobot); 

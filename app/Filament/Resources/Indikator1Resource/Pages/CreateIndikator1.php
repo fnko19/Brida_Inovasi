@@ -13,9 +13,9 @@ class CreateIndikator1 extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
 {
     $data['bobot'] = match ($data['parameter'] ?? null) {
-        'SK Kepala Perangkat Daerah' => 1,
-        'SK Kepala Daerah' => 2,
-        'Peraturan Kepala Daerah/Peraturan Daerah' => 3,
+        'SK Kepala Perangkat Daerah' => 3,
+        'SK Kepala Daerah' => 6,
+        'Peraturan Kepala Daerah/Peraturan Daerah' => 9,
         default => 0,
     };
 
