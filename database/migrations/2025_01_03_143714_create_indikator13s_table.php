@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('bobot13')->nullable();
             $table->timestamps();
 
-            $table->foreign('inovasi13_id')->references('id')->on('inovasi_daerahs');
+            $table->foreign('inovasi13_id')->references('id')->on('inovasi_daerahs')->onDelete('cascade');
         });
     }
 

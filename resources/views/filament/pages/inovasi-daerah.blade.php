@@ -3,276 +3,215 @@
 @section('title', 'Inovasi BRIDA Kota Makassar')
 
 @section('content')
-    <div class="space-y-4 mt-8">
-        <h1 class="text-2xl font-bold pb-4">
+    <div class="space-y-4 py-2">
+        <h1 class="text-xl font-bold pb-4">
             Inovasi Daerah
-        </h1>
-        <div class="pb-4 mb-2">
-            <div class="bg-blue-50 min-w-full shadow-sm rounded-lg p-4 border">
-                    <h2 class="font-semibold text-lg text-gray-800">Update Terakhir Pengukuran Mandiri Indeks Inovasi Daerah:</h2>
-                    <p class="text-gray-800 mt-2">
-                            25/11/2024 19:15 WITA
-                    </p>
-            </div>
-        </div>    
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
-                    <img src="{{ asset('images/a.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Inovasi yang Dilaporkan</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
-                    <img src="{{ asset('images/b.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Inovasi yang Dikirim</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
-                    <img src="{{ asset('images/c.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Skor Jumlah Inovasi</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
-                    <img src="{{ asset('images/d.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Inisiatif</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-200 p-4 flex space-x-4 rounded shadow-md">
-                    <img src="{{ asset('images/f.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Uji Coba</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-                <div class="bg-blue-200 flex space-x-4 p-4 rounded shadow-md">
-                    <img src="{{ asset('images/g.png') }}" alt="inovasi daerah" class="w-14 h-14">
-                    <div>
-                        <h3 class="font-bold text-lg">Penerapan</h3>
-                        <p class="text-2xl font-bold">0</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-end pt-3">
-                <button class="bg-blue-500 px-3 py-2 text-white font-semibold rounded-md">Unduh XLS</button>
-            </div>
-
-            <div class="mt-4">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: black;">Semua</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color: blue;">Inisiatif</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color: blue;">Uji Coba</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" style="color: blue;">Penerapan</a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="card bg-blue-50 p-4">
-                <div class="card-body">
+        </h1> 
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/a.png') }}" alt="inovasi daerah" class="w-14 h-14">
                 <div>
-                <h4 class="font-bold text-lg">Kota Makassar</h4>
-                
-                <form class="mb-4 mt-2">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="bentukInovasi" class="form-label font-semibold">Bentuk Inovasi</label>
-                            <select id="bentukInovasi" class="form-select">
-                                <option selected>Select...</option>
-                                <option value="1">Inovasi daerah lainnya sesuai dengan urusan pemerintah yang menjadi kewenangan daerah</option>
-                                <option value="2">Inovasi pelayanan publik</option>
-                                <option value="3">Inovasi tata kelola pemerintah daerah</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="jenisUrusan" class="form-label font-semibold">Jenis Urusan</label>
-                            <select id="jenisUrusan" class="form-select">
-                                <option selected>Select...</option>
-                                <option value="1">Pendidikan</option>
-                                <option value="2">Kesehatan</option>
-                                <option value="3">Pekerjaan Umum dan Penataan Ruang</option>
-                                <option value="4">Perumahan Rakyat dan Kawasan Pemukiman</option>
-                                <option value="5">Ketentraman, Ketertiban Umum, dan Perlindungan Masyarakat</option>
-                                <option value="6">Sosial</option>
-                                <option value="7">Tenaga Kerja</option>
-                                <option value="8">Pemberdayaan Perempuan dan Perlindungan Anak</option>
-                                <option value="9">Pangan</option>
-                                <option value="10">Pertahanan</option>
-                                <option value="11">Lingkungan Hidup</option>
-                                <option value="12">Administrasi Kependudukan dan Pencatatan Sipil</option>
-                                <option value="13">Pemberdayaan Masyarakat dan Desa</option>
-                                <option value="14">Pengendalian Penduduk dan Keluarga Berencana</option>
-                                <option value="15">Perhubungan</option>
-                                <option value="16">Komunikasi dan Informatika</option>
-                                <option value="17">Koperasi, Usaha Kecil dan Menengah</option>
-                                <option value="18">Penanaman Modal</option>
-                                <option value="19">Kepemudaan dan Olahraga</option>
-                                <option value="20">Statistik</option>
-                                <option value="21">Persandian</option>
-                                <option value="22">Kebudayaan</option>
-                                <option value="23">Perpustakaan</option>
-                                <option value="24">Kearsipan</option>
-                                <option value="25">Kelautan dan Perikanan</option>
-                                <option value="26">Pariwisata</option>
-                                <option value="27">Pertanian</option>
-                                <option value="28">Kehutanan</option>
-                                <option value="29">Energi dan Sumber Daya Mineral</option>
-                                <option value="30">Perdagangan</option>
-                                <option value="31">Perindustrian</option>
-                                <option value="32">Transmigrasi</option>
-                                <option value="33">Perencanaan</option>
-                                <option value="34">Keuangan</option>
-                                <option value="35">Kepegawaian</option>
-                                <option value="36">Pendidikan dan Pelatihan</option>
-                                <option value="37">Penelitian dan Pengembangan</option>
-                                <option value="38">Fungsi lain sesuai dengan Ketentuan Peraturan Perundang-undangan</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="inisiator" class="form-label font-semibold">Inisiator</label>
-                            <select id="inisiator" class="form-select">
-                                <option selected>Select</option>
-                                <option value="1">Kepala Daerah</option>
-                                <option value="2">Anggota DPRD</option>
-                                <option value="3">OPD</option>
-                                <option value="4">ASN</option>
-                                <option value="5">Masyarakat</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-
-                <table class="table table-bordered table-striped w-full">
-                    <thead class="table-light">
-                        <tr>
-                            <th class="align-top font-normal">#</th>
-                            <th class="align-top font-normal">Nama Pemda</th>
-                            <th class="align-top font-normal">Nama Inovasi*</th>
-                            <th class="align-top font-normal">Tahapan Inovasi*</th>
-                            <th class="align-top font-normal">Nama Inisiator*</th>
-                            <th class="align-top font-normal">Urusan Pemerintahan Utama</th>
-                            <th class="align-top font-normal">Waktu Uji Coba Inovasi Daerah*</th>
-                            <th class="align-top font-normal">Waktu Penerapan Inovasi Daerah*</th>
-                            <th class="align-top font-normal">Estimasi Skor Kematangan</th>
-                            <th class="align-top font-normal">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-red-200">
-                            <td class="align-top font-normal">1</td>
-                            <td class="align-top font-normal">Kota Makassar</td>
-                            <td class="align-top font-normal">Mari Berwakaf</td>
-                            <td class="align-top font-normal">Penerapan</td>
-                            <td class="align-top font-normal">Drs. Kaswadi</td>
-                            <td class="align-top font-normal">pendidikan</td>
-                            <td class="align-top font-normal">21/05/2022</td>
-                            <td class="align-top font-normal">21/11/2023</td>
-                            <td class="align-top font-normal">104.00</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/1.png') }}" alt="Eye" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/2.png') }}" alt="Pakta Integritas" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/3.png') }}" alt="Unduk Dokumen" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/4.png') }}" alt="Unduh XLS" width="20" height="20">
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-green-200">
-                            <td class="align-top font-normal">2</td>
-                            <td class="align-top font-normal">Kota Makassar</td>
-                            <td class="align-top font-normal">SABAR</td>
-                            <td class="align-top font-normal">Penerapan</td>
-                            <td class="align-top font-normal">Tim SABAR SDI Minasa Upa</td>
-                            <td class="align-top font-normal">pendidikan</td>
-                            <td class="align-top font-normal">15/04/2023</td>
-                            <td class="align-top font-normal">01/05/2023</td>
-                            <td class="align-top font-normal">109.00</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/1.png') }}" alt="Eye" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/2.png') }}" alt="Pakta Integritas" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/3.png') }}" alt="Unduk Dokumen" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/4.png') }}" alt="Unduh XLS" width="20" height="20">
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-green-200">
-                            <td class="align-top font-normal">3</td>
-                            <td class="align-top font-normal">Kota Makassar</td>
-                            <td class="align-top font-normal">GA'DE-GA'DE PUSTAKA</td>
-                            <td class="align-top font-normal">Penerapan</td>
-                            <td class="align-top font-normal">Tulus Wulan Juni, S.Sos</td>
-                            <td class="align-top font-normal">perpustakaan</td>
-                            <td class="align-top font-normal">03/10/2021</td>
-                            <td class="align-top font-normal">17/05/2022</td>
-                            <td class="align-top font-normal">108.00</td>
-                            <td class="align-top font-normal">
-                                <div class="flex justify-center space-x-2">
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/1.png') }}" alt="Eye" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/2.png') }}" alt="Pakta Integritas" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/3.png') }}" alt="Unduk Dokumen" width="20" height="20">
-                                    </a>
-                                    <a href="#" class="btn btn-sm">
-                                        <img src="{{ asset('images/4.png') }}" alt="Unduh XLS" width="20" height="20">
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="d-flex justify-content-center">
-                    <nav class="mt-4">
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item disabled"><a class="page-link" href="#">»</a></li>
-                        </ul>
-                    </nav>
+                    <h3 class="font-bold">Inovasi yang Dilaporkan</h3>
+                    <p class="text-2xl font-bold">{{ $inovasiYangDilaporkan }}</p>
+                </div>
+            </div>
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/b.png') }}" alt="inovasi daerah" class="w-14 h-14">
+                <div>
+                    <h3 class="font-bold">Inovasi yang Dikirim</h3>
+                    <p class="text-2xl font-bold">{{ $inovasiYangDikirim }}</p>
+                </div>
+            </div>
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/c.png') }}" alt="inovasi daerah" class="w-14 h-14">
+                <div>
+                    <h3 class="font-bold">Skor Jumlah Inovasi</h3>
+                    <p class="text-2xl font-bold">{{ $skorJumlahInovasi }}</p>
+                </div>
+            </div>
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/d.png') }}" alt="inovasi daerah" class="w-14 h-14">
+                <div>
+                    <h3 class="font-bold">Inisiatif</h3>
+                    <p class="text-2xl font-bold">{{ $inisiatif }}</p>
+                </div>
+            </div>
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/f.png') }}" alt="inovasi daerah" class="w-14 h-14">
+                <div>
+                    <h3 class="font-bold">Uji Coba</h3>
+                    <p class="text-2xl font-bold">{{ $ujiCoba }}</p>
+                </div>
+            </div>
+            <div class="bg-red-200 p-4 flex space-x-4 rounded shadow-md">
+                <img src="{{ asset('images/g.png') }}" alt="inovasi daerah" class="w-14 h-14">
+                <div>
+                    <h3 class="font-bold">Penerapan</h3>
+                    <p class="text-2xl font-bold">{{ $penerapan }}</p>
                 </div>
             </div>
         </div>
 
+        <div class="flex justify-end pt-8 pb-4">
+            <a href="{{ route('excelInovasi') }}" class="bg-red-700 px-3 py-1 text-sm text-white font-semibold rounded-md">
+                Unduh XLS
+            </a>
+        </div>
 
 
+        <div class="card bg-red-100 p-4">
+            <div class="card-body">
+                <h4 class="font-bold text-lg pb-2">Kota Makassar</h4>
 
+                <div class="flex items-center space-x-4 pb-4">
+                    <label for="filterTahapan" class="text-sm font-semibold">Tahapan Inovasi</label>
+                    <select id="filterTahapan" class="bg-white text-sm rounded-md px-2 py-1">
+                        <option value="">Semua</option>
+                        <option value="Inisiatif">Inisiatif</option>
+                        <option value="Uji_Coba">Uji Coba</option>
+                        <option value="Penerapan">Penerapan</option>
+                    </select>
+                </div>
 
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+                        <thead class="bg-gray-800 text-white">
+                            <tr>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Nama Inovasi</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Tahapan Inovasi</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Nama Inisiator</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Urusan Pemerintah Utama</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Waktu Uji Coba Inovasi Daerah</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Waktu Penerapan Inovasi Daerah</th>
+                                <th class="px-6 bg-red-700 py-1 text-left text-sm font-semibold">Estimasi Skor Kematangan</th>
+                                <th class="px-12 bg-red-700 py-1 text-center text-sm font-semibold">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inovasiList" class="divide-y divide-gray-200">
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            const urusanUtamaMapping = {
+                '1': 'Pendidikan',
+                '2': 'Kesehatan',
+                '3': 'Pekerjaan Umum dan Penataan Ruang',
+                '4': 'Perumahan Rakyat dan Kawasan Pemukiman',
+                '5': 'Ketentraman, Ketertiban Umum, dan Perlindungan Masyarakat',
+                '6': 'Sosial',
+                '7': 'Tenaga Kerja',
+                '8': 'Pemberdayaan Perempuan dan Perlindungan Anak',
+                '9': 'Pangan',
+                '10': 'Pertahanan',
+                '11': 'Lingkungan Hidup',
+                '12': 'Administrasi Kependudukan dan Pencatatan Sipil',
+                '13': 'Pemberdayaan Masyarakat dan Desa',
+                '14': 'Pengendalian Penduduk dan Keluarga Berencana',
+                '15': 'Perhubungan',
+                '16': 'Komunikasi dan Informatika',
+                '17': 'Koperasi, Usaha Kecil dan Menengah',
+                '18': 'Penanaman Modal',
+                '19': 'Kepemudaan dan Olahraga',
+                '20': 'Statistik',
+                '21': 'Persandian',
+                '22': 'Kebudayaan',
+                '23': 'Perpustakaan',
+                '24': 'Kearsipan',
+                '25': 'Kelautan dan Perikanan',
+                '26': 'Pariwisata',
+                '27': 'Pertanian',
+                '28': 'Kehutanan',
+                '29': 'Energi dan Sumber Daya Mineral',
+                '30': 'Perdagangan',
+                '31': 'Perindustrian',
+                '32': 'Transmigrasi',
+                '33': 'Perencanaan',
+                '34': 'Keuangan',
+                '35': 'Kepegawaian',
+                '36': 'Pendidikan dan Pelatihan',
+                '37': 'Penelitian dan Pengembangan',
+                '38': 'Fungsi lain sesuai dengan Ketentuan Peraturan Perundang-undangan',
+            };
+
+            document.getElementById('filterTahapan').addEventListener('change', function () {
+                const selectedTahapan = this.value;
+                fetchInovasiData(selectedTahapan);
+            });
+
+            function fetchInovasiData(tahapan = '') {
+                let url = tahapan 
+                    ? `http://localhost:8000/api/inovasi-daerah?${new URLSearchParams({ tahapan })}`
+                    : 'http://localhost:8000/api/inovasi-daerah';
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const listElement = document.getElementById('inovasiList');
+
+                        // Clear existing content
+                        listElement.innerHTML = '';
+
+                        // Loop through the fetched inovasi data
+                        data.forEach(inovasi => {
+                            console.log(inovasi); // Check data in the console
+                            
+                            // Mapping to government affairs
+                            const urusanUtama = urusanUtamaMapping[inovasi.urusan_utama] || 'N/A';
+
+                            // Create a table row element for each inovasi
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td class="px-6 py-2 text-sm text-gray-900">${inovasi.nama_inovasi}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900">${inovasi.tahapan_inovasi}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900">${inovasi.nama_inisiator}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900">${urusanUtama}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900">${inovasi.waktu_uji || 'N/A'}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900">${inovasi.waktu_penerapan || 'N/A'}</td>
+                                <td class="px-6 py-2 text-sm text-gray-900" id="skorKematangan-${inovasi.id}">
+                                    0
+                                </td>
+                                <td class="text-center py-4 flex justify-center items-center">
+                                    <a href="http://localhost:8000/api/download-pdf/${inovasi.id}" target="_blank" class="btn btn-sm" title="Download PDF">
+                                        <img src="{{ asset('images/2.png') }}" class="w-5 h-5" alt="Download PDF">
+                                    </a>
+                                    <!-- Button to download document -->
+                                    <a href="http://localhost:8000/api/export-excel/${inovasi.id}" target="_blank" class="btn btn-sm" title="Download Excel">
+                                        <img src="{{ asset('images/4.png') }}" alt="Download Document" class="w-5 h-5">
+                                    </a>
+                                    <a href="http://localhost:8000/export-excel/${inovasi.id}" target="_blank" class="btn btn-sm" title="Download Repor Inovasi">
+                                        <img src="{{ asset('images/7.png') }}" alt="Download Rapor Inovasi" class="w-5 h-5">
+                                    </a>
+                                </td>
+                            `;
+                            listElement.appendChild(row);
+
+                            // Fetching skor kematangan for each inovasi
+                            fetch(`http://localhost:8000/api/inovasi-daerah/${inovasi.id}/skor-kematangan`)
+                                .then(response => response.json())
+                                .then(skorData => {
+                                    const skorKematanganElement = document.getElementById(`skorKematangan-${inovasi.id}`);
+                                    // Update the skor kematangan if available
+                                    skorKematanganElement.textContent = skorData.skor_kematangan || '0';
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching skor kematangan:', error);
+                                    const skorKematanganElement = document.getElementById(`skorKematangan-${inovasi.id}`);
+                                    skorKematanganElement.textContent = 'N/A';
+                                });
+                        });
+                    })
+                    .catch(error => console.error('Error fetching inovasi data:', error));
+            }
+
+            // Initial data load
+            fetchInovasiData();
+
+        </script>
     </div>
 @endsection

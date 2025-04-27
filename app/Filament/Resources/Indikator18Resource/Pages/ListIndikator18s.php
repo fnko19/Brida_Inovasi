@@ -24,9 +24,9 @@ class ListIndikator18s extends ListRecords
     public function getTableQuery(): Builder
     {
         $query = parent::getTableQuery(); 
-        $inovasiId = request()->query('inovasi17');
+        $inovasiId = request()->query('inovasi18');
         if ($inovasiId) {
-            $query->where('inovasi17_id', $inovasiId);
+            $query->where('inovasi18_id', $inovasiId);
         }
 
         return $query;

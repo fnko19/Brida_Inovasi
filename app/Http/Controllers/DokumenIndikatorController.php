@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IndikatorProfilDaerah;
+use App\Models\DOkumenIndikator;
 
 class DokumenIndikatorController extends Controller
 {
@@ -31,6 +32,38 @@ class DokumenIndikatorController extends Controller
 
         // Redirect atau response lainnya
         return redirect()->route('dokumen-indikator.index')->with('success', 'Dokumen berhasil disimpan.');
+    }
+
+    public function getDokumenByIndikator($indikator_id)
+    {
+        // Ambil dokumen berdasarkan indikator_id
+        $dokumenIndikators = DokumenIndikator::where('indikator_id', $indikator_id)->get();
+
+        // Cek apakah ada dokumen
+        if ($dokumenIndikators->isEmpty()) {
+            return response()->json(['message' => 'Tidak ada dokumen untuk indikator ini.'], 404);
+        }
+
+        // Modifikasi untuk mengirimkan URL file yang bisa diakses
+        $dokumenIndikators->map(function ($dokumen) {
+            $dokumen->file_url = asset('storage/' . $dokumen->file_path);
+        });
+
+        // Kembalikan data dalam format JSON
+        return response()->json($dokumenIndikators);
+    }
+
+
+    public function download($id)
+    {
+        $dokumen = DokumenIndikator::findOrFail($id);
+        $filePath = storage_path('app/' . $dokumen->file_path);
+
+        if (!file_exists($filePath)) {
+            return response()->json(['error' => 'Dokumen tidak ditemukan.'], 404);
+        }
+
+        return response()->download($filePath);
     }
 
 }

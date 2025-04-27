@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Resources\Resource;
@@ -21,7 +22,7 @@ class LaporanDiklatResource extends Resource
 {
     protected static ?string $model = LaporanDiklat::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-bar';
 
     protected static ?string $navigationLabel = 'Data Laporan Diklat';
 
@@ -52,6 +53,7 @@ class LaporanDiklatResource extends Resource
                         ])
                         ->required(),
                     TextInput::make('judul_pelatihan')->label('Judul Proyek Perubahan / Aksi Perubahan')->required(),
+                    
                 ])
             ]);
     }
@@ -87,6 +89,12 @@ class LaporanDiklatResource extends Resource
                     ->label('')
                     ->color('danger')
                     ->tooltip('Hapus'),
+                Action::make('inovasi_convert')
+                    ->label('')
+                    ->url(fn (laporanDiklat $record) => route('filament.admin.resources.inovasi-daerahs.create'))
+                    ->icon('heroicon-o-arrow-right-start-on-rectangle')
+                    ->color('rapor')
+                    ->tooltip('Konversi Inovasi'),    
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

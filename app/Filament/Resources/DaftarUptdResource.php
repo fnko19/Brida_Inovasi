@@ -22,7 +22,7 @@ class DaftarUptdResource extends Resource
 {
     protected static ?string $model = daftarUptd::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
     
     protected static ?string $navigationGroup = 'Konfigurasi';
 
@@ -40,7 +40,7 @@ class DaftarUptdResource extends Resource
                         ->required(),
                     Select::make('daftar_opd_id')
                         ->label('Nama OPD')
-                        ->relationship('opds', 'nama_opd') 
+                        ->relationship('daftarOpd', 'nama_opd') 
                         ->required(),
                     TextInput::make('daerah')
                         ->label('Daerah')
@@ -52,11 +52,11 @@ class DaftarUptdResource extends Resource
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table 
             ->columns([
                 TextColumn::make('id')->label('No'),
                 TextColumn::make('nama_uptd')->label('Nama UPTD'),
-                TextColumn::make('opds.nama_opd')  
+                TextColumn::make('daftarOpd.nama_opd')   
                     ->label('Nama OPD')
                     ->sortable()
                     ->searchable(),

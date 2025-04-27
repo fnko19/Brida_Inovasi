@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('file_path')->nullable();
             $table->timestamps();
 
-            $table->foreign('indikator9_id')->references('id')->on('indikator9s');
+            $table->foreign('indikator9_id')->references('id')->on('indikator9s')->onDelete('cascade');
         });
     }
 

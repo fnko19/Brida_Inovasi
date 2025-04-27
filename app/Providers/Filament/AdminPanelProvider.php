@@ -32,10 +32,10 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => '#90E0EF',
+                'primary' => '#B22222',
                 'danger' => Color::Red,
                 'gray' => Color::Zinc,
-                'info' => Color::Blue,
+                'info' => '#B22222',
                 'ijo' => Color::Green,
                 'indikator' => '#000000',
                 'pdf' => '#800000',
@@ -43,7 +43,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->font('Poppins')
             ->brandLogo(asset('images/removeLogo.png'))
-            ->brandLogoHeight('2rem')
+            ->brandLogoHeight('88px')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -76,3 +76,4 @@ class AdminPanelProvider extends PanelProvider
             ]);
     }
 }
+

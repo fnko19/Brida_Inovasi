@@ -30,7 +30,7 @@ class IndikatorProfilDaerahResource extends Resource
 
     protected static ?string $navigationLabel = 'Indikator Profil Daerah';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
     public static function form(Form $form): Form
     {
@@ -82,6 +82,16 @@ class IndikatorProfilDaerahResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public function toArray($request)
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'dokumen_pendukung' => $this->dokumen_pendukung, // Contoh jika ada dokumen
         ];
     }
 

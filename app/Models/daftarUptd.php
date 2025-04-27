@@ -11,13 +11,27 @@ class daftarUptd extends Model
 
     protected $fillable = ['nama_uptd', 'daftar_opd_id', 'daerah'];
 
-    public function opds()
+    public function daftarOpd()  
     {
-        return $this->belongsTo(daftarOpd::class, 'daftar_opd_id');
+        return $this->belongsTo(DaftarOpd::class, 'daftar_opd_id');
     }
 
     public function usersUptd()
     {
-        return $this->hasMany(User::class, 'daftar_upt_id'); // Sesuaikan dengan nama kolom foreign key pada tabel users
+        return $this->hasMany(User::class, 'upt_id'); 
     }
+
+    public function inovasis()
+    {
+        return $this->hasMany(Inovasi_Daerah::class, 'uptd_id');
+    }
+
+    public function indikator($nomor)
+    {
+        $model = "App\\Models\\Indikator{$nomor}";
+        return $this->hasMany($model, 'daftar_uptd_id');
+    }
+
+    
+
 }

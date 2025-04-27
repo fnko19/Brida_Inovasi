@@ -26,7 +26,7 @@ class Indikator9Resource extends Resource
 {
     protected static ?string $model = Indikator9::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     protected static ?string $navigationGroup = 'Data Indikator';
 

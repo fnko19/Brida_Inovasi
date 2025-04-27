@@ -9,6 +9,8 @@ class IndikatorProfilDaerah extends Model
 {
     use HasFactory;
 
+     protected $table = 'indikator_profil_daerahs';
+
     protected $fillable = [
         'nama_indikator',
         'informasi',
@@ -16,6 +18,7 @@ class IndikatorProfilDaerah extends Model
 
     public function dokumen()
     {
-        return $this->hasMany(DokumenIndikator::class, 'indikator_id');
+        return $this->hasOne(DokumenIndikator::class, 'indikator_id', 'id'); 
     }
+
 }
